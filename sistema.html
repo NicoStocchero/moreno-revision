@@ -42,16 +42,20 @@ h3{font-size:29px;line-height:1.14;letter-spacing:-.8px;margin:0 0 24px;max-widt
 .det li svg.i{width:17px;height:17px;margin-top:2px}
 /* features */
 .gr{margin-bottom:26px}
-.gr>h4{display:flex;align-items:center;gap:9px;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--navy);margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--lin)}
-.fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:9px}
-.f{background:#fff;border:1px solid var(--lin);border-radius:12px;padding:14px 15px;cursor:pointer;transition:.15s}
-.f:hover{border-color:var(--pur2)}
-.f>div{display:flex;gap:10px;align-items:center}
-.f b{font-size:14.5px;line-height:1.25}
-.f .mas{margin-left:auto;color:#bdbab3;font-size:18px;line-height:1}
-.f p{margin:10px 0 0;font-size:13.5px;color:var(--gris);display:none}
-.f.on{background:var(--navy);border-color:var(--navy);color:#fff}
-.f.on svg.i{stroke:var(--lima)}.f.on p{display:block;color:#b9b9c2}.f.on .mas{color:var(--lima)}
+.gr>h4{display:flex;align-items:center;gap:10px;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--navy);margin:0 0 10px;padding:9px 12px;border:1px solid var(--lin);border-radius:10px;background:#fff;cursor:pointer;transition:.15s;user-select:none}
+.gr>h4:hover{border-color:var(--pur2)}
+.gr>h4 .n{margin-left:auto;font-size:11px;letter-spacing:.5px;color:var(--gris);font-weight:400;text-transform:none}
+.gr>h4 .mas{width:22px;height:22px;border-radius:6px;background:#f2f0fa;color:var(--pur);display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;font-weight:400}
+.gr.open>h4{background:var(--navy);color:#fff;border-color:var(--navy)}
+.gr.open>h4 svg.i{stroke:var(--lima)}.gr.open>h4 .n{color:#8a8a95}
+.gr.open>h4 .mas{background:#ffffff1f;color:var(--lima)}
+.fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:9px}
+.f{background:#fff;border:1px solid var(--lin);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:9px}
+.f>div{display:flex;gap:10px;align-items:flex-start}
+.f b{font-size:14.5px;line-height:1.3}
+.f p{margin:0;font-size:13.5px;color:var(--gris);display:none}
+.gr.open .f{border-left:3px solid var(--pur2)}
+.gr.open .f p{display:block}
 /* slack */
 .slack{background:#fff;border:1px solid var(--lin);border-radius:14px;overflow:hidden}
 .slack .bar{background:#3f0f40;color:#fff;padding:9px 15px;font-size:13px;display:flex;gap:8px;align-items:center}
@@ -71,6 +75,12 @@ h3{font-size:29px;line-height:1.14;letter-spacing:-.8px;margin:0 0 24px;max-widt
 .rx .hint{font-size:12px;color:var(--gris);margin-left:4px}
 .out{margin:13px 17px 17px;padding:12px 14px;background:#faf9f6;border:1px dashed var(--lin);border-radius:10px;font-size:14px;color:#3f3f46;min-height:44px}
 .out b{color:var(--pur)}
+.thread{display:none;margin:0 17px 17px;padding:13px 15px;border-left:3px solid #1d9bd1;background:#f7fbfe;border-radius:0 10px 10px 0}
+.thread.on{display:block}
+.tl{display:flex;gap:7px;align-items:center;font-size:13px;color:#0b4f6c;margin-bottom:10px}
+.tl b{font-weight:600}.tl span{color:var(--gris)}
+.tin{display:flex;gap:9px;align-items:center;background:#fff;border:1px solid #d7d5ce;border-radius:9px;padding:9px 11px;font-size:14px;color:#9a9aa2}
+.tnote{margin:10px 0 0;font-size:12.5px;color:var(--gris)}.tnote b{color:var(--navy)}
 .nota{display:flex;gap:9px;align-items:flex-start;background:var(--lima);border:1px solid #c9dd4f;border-radius:11px;padding:12px 14px;font-size:13.5px;color:#3f4a06;margin-bottom:14px}
 .nota svg.i{stroke:#5b6b07}
 /* varios */
@@ -191,13 +201,16 @@ footer{color:var(--gris);font-size:12.5px;border-top:1px solid var(--lin);paddin
 <span class="hint">pulsa una</span></div>
 </div></div>
 <div class="out" id="out">Las tres vienen puestas por MORENO. Al pulsar, el contador sube a 2 y sabe que has sido tú.</div>
+<div id="thread" class="thread"><div class="tl"><svg class="i" style="width:16px;height:16px;stroke:#1d9bd1"><use href="#chat"/></svg><b>1 respuesta</b><span>en el hilo</span></div>
+<div class="tin"><div class="av" style="width:26px;height:26px;font-size:11px;background:#3f0f40">N</div><span>Escribe aquí el mensaje corregido…</span></div>
+<p class="tnote">Lo que escribas en el hilo se envía al lead <b>tal cual</b>, sin retocarlo. Si solo reaccionas y no escribes, MORENO te lo recuerda en una hora.</p></div>
 </div>
-<div class="fs" style="margin-top:12px">
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#user"/></svg><b>Dos personas votan distinto</b><span class="mas">+</span></div><p>No decide por vosotros. Os menciona en el hilo para que lo resolváis.</p></div>
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#pencil"/></svg><b>Tocas el lápiz y no escribes</b><span class="mas">+</span></div><p>Te lo recuerda en una hora, y luego cada día hasta que escribas el texto.</p></div>
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#clock"/></svg><b>Nadie contesta</b><span class="mas">+</span></div><p>Recuerda a las 24 horas. A las 48 lo deja y el lead pasa a gestión manual.</p></div>
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#send"/></svg><b>Tu corrección se envía literal</b><span class="mas">+</span></div><p>No la reescribe. Y la guarda con su causa, para no repetir el fallo.</p></div>
-</div>
+<div class="gr" style="margin-top:14px"><h4 onclick="ab(this)"><svg class="i"><use href="#warn"/></svg><span>Y si algo se complica</span><span class="n">4 casos</span><span class="mas">+</span></h4><div class="fs">
+<div class="f"><div><svg class="i"><use href="#user"/></svg><b>Dos personas votan distinto</b></div><p>No decide por vosotros. Os menciona en el hilo para que lo resolváis.</p></div>
+<div class="f"><div><svg class="i"><use href="#pencil"/></svg><b>Tocas el lápiz y no escribes</b></div><p>Te lo recuerda en una hora, y luego cada día hasta que escribas el texto.</p></div>
+<div class="f"><div><svg class="i"><use href="#clock"/></svg><b>Nadie contesta</b></div><p>Recuerda a las 24 horas. A las 48 lo deja y el lead pasa a gestión manual.</p></div>
+<div class="f"><div><svg class="i"><use href="#send"/></svg><b>Tu corrección se envía literal</b></div><p>No la reescribe. Y la guarda con su causa, para no repetir el fallo.</p></div>
+</div></div>
 </div></section>
 
 <section id="memoria"><div class="w">
@@ -207,12 +220,12 @@ footer{color:var(--gris);font-size:12.5px;border-top:1px solid var(--lin);paddin
 <div class="capa"><svg class="i"><use href="#tag"/></svg><div><b>Cliente</b><p>Qué se dice. Objetivo, a quién, activos reales y qué no se promete.</p></div></div>
 <div class="capa"><svg class="i"><use href="#db"/></svg><div><b>Base</b><p>Lo que cambia. Estado de cada hilo, cola de seguimientos, reuniones y lo investigado.</p></div></div>
 </div>
-<div class="fs" style="margin-top:12px">
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#ban"/></svg><b>No repite un argumento gastado</b><span class="mas">+</span></div><p>Si ya se usó con esa cuenta y no funcionó, no vuelve a salir.</p></div>
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#chat"/></svg><b>No repite una pregunta</b><span class="mas">+</span></div><p>Lo que el lead ya contestó no se vuelve a preguntar en ese hilo.</p></div>
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#shield"/></svg><b>No contesta dos veces</b><span class="mas">+</span></div><p>Un mensaje del lead recibe una sola respuesta, aunque el barrido se repita.</p></div>
-<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#chart"/></svg><b>Sabe qué toque convierte</b><span class="mas">+</span></div><p>Con el histórico se ve si el tercer seguimiento sirve o sobra.</p></div>
-</div>
+<div class="gr" style="margin-top:14px"><h4 onclick="ab(this)"><svg class="i"><use href="#brain"/></svg><span>Lo que la memoria evita</span><span class="n">4 funciones</span><span class="mas">+</span></h4><div class="fs">
+<div class="f"><div><svg class="i"><use href="#ban"/></svg><b>No repite un argumento gastado</b></div><p>Si ya se usó con esa cuenta y no funcionó, no vuelve a salir.</p></div>
+<div class="f"><div><svg class="i"><use href="#chat"/></svg><b>No repite una pregunta</b></div><p>Lo que el lead ya contestó no se vuelve a preguntar en ese hilo.</p></div>
+<div class="f"><div><svg class="i"><use href="#shield"/></svg><b>No contesta dos veces</b></div><p>Un mensaje del lead recibe una sola respuesta, aunque el barrido se repita.</p></div>
+<div class="f"><div><svg class="i"><use href="#chart"/></svg><b>Sabe qué toque convierte</b></div><p>Con el histórico se ve si el tercer seguimiento sirve o sobra.</p></div>
+</div></div>
 </div></section>
 
 <section id="limites"><div class="w">
@@ -294,8 +307,9 @@ d.innerHTML=`<div class="hd"><i>${p[0]}</i>${ic(p[1])}</div><b>${p[2]}</b>`;d.on
 function sel(i){[...cont.children].forEach((c,j)=>c.classList.toggle('on',i==j));const p=P[i];
 det.innerHTML=`<h4>${p[2]}</h4><p style="margin:0 0 12px;color:#3f3f46">${p[3]}</p><ul>${p[4].map(x=>`<li>${ic(x[0])}<span>${x[1]}</span></li>`).join('')}</ul>`;}
 sel(0);
-document.getElementById('grupos').innerHTML=G.map(g=>`<div class="gr"><h4>${ic(g[0])}${g[1]}</h4><div class="fs">`+
-g[2].map(f=>`<div class="f" onclick="this.classList.toggle('on')"><div>${ic(f[0])}<b>${f[1]}</b><span class="mas">+</span></div><p>${f[2]}</p></div>`).join('')+`</div></div>`).join('');
+document.getElementById('grupos').innerHTML=G.map(g=>`<div class="gr"><h4 onclick="ab(this)">${ic(g[0])}<span>${g[1]}</span><span class="n">${g[2].length} funciones</span><span class="mas">+</span></h4><div class="fs">`+
+g[2].map(f=>`<div class="f"><div>${ic(f[0])}<b>${f[1]}</b></div><p>${f[2]}</p></div>`).join('')+`</div></div>`).join('');
+function ab(h){const g=h.parentNode,o=g.classList.toggle('open');h.querySelector('.mas').textContent=o?'−':'+';}
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{
 document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
 document.querySelectorAll('.pane[id^=p]').forEach((p,i)=>p.classList.toggle('on',i==b.dataset.t));});
@@ -305,5 +319,6 @@ no:"<b>⛔ No se envía.</b> Se etiqueta y el hilo se cierra."};
 document.querySelectorAll('#rx button').forEach(b=>b.onclick=()=>{
 document.querySelectorAll('#rx button').forEach(x=>{x.classList.remove('on');x.querySelector('i').textContent='1';});
 b.classList.add('on');b.querySelector('i').textContent='2';
-document.getElementById('out').innerHTML=R[b.dataset.r]+' <span style="color:#6b6b73">El contador subió a 2: así sabe que has reaccionado tú y no él.</span>';});
+document.getElementById('out').innerHTML=R[b.dataset.r]+' <span style="color:#6b6b73">El contador subió a 2: así sabe que has reaccionado tú y no él.</span>';
+document.getElementById('thread').classList.toggle('on', b.dataset.r=='co');});
 </script></body></html>
