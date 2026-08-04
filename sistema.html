@@ -42,13 +42,14 @@ h3{font-size:29px;line-height:1.14;letter-spacing:-.8px;margin:0 0 22px;max-widt
 .det li svg.i{width:17px;height:17px;margin-top:2px}
 /* features */
 .gr{margin-bottom:26px}
-.gr>h4{display:flex;align-items:center;gap:9px;font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--pur);margin:0 0 9px}
-.gr>h4 .n{margin-left:auto;font-size:11px;letter-spacing:.4px;color:#a3a19a;font-weight:400;text-transform:none}
-.gr>h4:after{content:"";flex:0 0 100%;order:9;height:1px;background:var(--lin);margin-top:8px}
+.gr>h4{display:flex;align-items:center;gap:9px;font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--pur);margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--lin)}
+.gr>h4 span{white-space:nowrap}
+.gr>h4 .n{margin-left:auto;font-size:11px;letter-spacing:.4px;color:#a3a19a;font-weight:400;text-transform:none;white-space:nowrap}
+@media(max-width:520px){.gr>h4{font-size:11px;letter-spacing:1px}.gr>h4 span{white-space:normal}}
 .fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:9px}
 .f{background:#fff;border:1px solid var(--lin);border-radius:12px;padding:15px;border-left:3px solid var(--pur2)}
 .f>div{display:flex;gap:10px;align-items:flex-start;margin-bottom:7px}
-.f b{font-size:14.5px;line-height:1.3}
+.f b{font-size:14.5px;line-height:1.3;text-wrap:balance}
 .f p{margin:0;font-size:13.5px;line-height:1.45;color:var(--gris)}
 /* slack */
 .slack{background:#fff;border:1px solid var(--lin);border-radius:14px;overflow:hidden}
