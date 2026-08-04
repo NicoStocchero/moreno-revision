@@ -5,237 +5,305 @@
 :root{--navy:#0c0c0c;--crema:#f5f4f0;--pur:#5b21b6;--pur2:#7c3aed;--lima:#e3f972;--gris:#6b6b73;--lin:#e4e2dc}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--crema);color:var(--navy);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif}
+svg.i{width:22px;height:22px;stroke:var(--pur2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 nav{position:sticky;top:0;z-index:20;background:rgba(12,12,12,.96);backdrop-filter:blur(6px);padding:0 18px}
-nav div{max-width:1100px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;align-items:center;height:54px}
-nav b{color:#fff;font-size:15px;margin-right:18px;white-space:nowrap}
-nav a{color:#a9a9b2;text-decoration:none;font-size:13px;padding:7px 11px;border-radius:8px;white-space:nowrap}
+nav div{max-width:1100px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;align-items:center;height:52px}
+nav b{color:#fff;font-size:15px;margin-right:16px}
+nav a{color:#a9a9b2;text-decoration:none;font-size:13px;padding:7px 10px;border-radius:8px;white-space:nowrap}
 nav a:hover{color:#fff;background:#ffffff14}
 .w{max-width:1100px;margin:0 auto;padding:0 18px}
-section{padding:58px 0 10px}
-h2{font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--pur);margin:0 0 8px}
-h3{font-size:30px;line-height:1.15;letter-spacing:-.8px;margin:0 0 10px;max-width:20ch}
-.sub{color:var(--gris);font-size:16px;max-width:56ch;margin:0 0 26px}
-
-.hero{background:var(--navy);color:var(--crema);padding:64px 0 54px;margin-bottom:8px}
-.hero h1{font-size:clamp(34px,5.6vw,60px);line-height:1.02;letter-spacing:-2px;margin:14px 0 16px;max-width:22ch}
+section{padding:54px 0 6px}
+h2{font-size:11.5px;text-transform:uppercase;letter-spacing:1.7px;color:var(--pur);margin:0 0 8px}
+h3{font-size:29px;line-height:1.14;letter-spacing:-.8px;margin:0 0 24px;max-width:22ch}
+.sub{color:var(--gris);font-size:15.5px;max-width:54ch;margin:-14px 0 22px}
+.hero{background:var(--navy);color:var(--crema);padding:58px 0 48px}
+.hero h1{font-size:clamp(32px,5.4vw,56px);line-height:1.03;letter-spacing:-1.8px;margin:12px 0 14px;max-width:21ch}
 .hero h1 em{font-style:normal;color:var(--lima)}
-.hero p{color:#b9b9c2;font-size:18px;max-width:52ch;margin:0}
-.tagline{font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:var(--pur2);font-weight:700}
-.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:#ffffff1f;border-radius:14px;overflow:hidden;margin-top:38px}
-.nums div{background:var(--navy);padding:20px 18px}
-.nums b{display:block;font-size:32px;letter-spacing:-1px;color:var(--lima)}
-.nums span{font-size:11.5px;text-transform:uppercase;letter-spacing:.9px;color:#8a8a95}
-
-.ciclo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.paso{background:#fff;border:1px solid var(--lin);border-radius:13px;padding:16px;cursor:pointer;transition:.15s;position:relative}
+.hero p{color:#b9b9c2;font-size:17.5px;max-width:50ch;margin:0}
+.tag{font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--pur2);font-weight:700}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:#ffffff1f;border-radius:14px;overflow:hidden;margin-top:34px}
+.nums div{background:var(--navy);padding:18px 16px}
+.nums b{display:block;font-size:30px;letter-spacing:-1px;color:var(--lima)}
+.nums span{font-size:11px;text-transform:uppercase;letter-spacing:.9px;color:#8a8a95}
+/* ciclo */
+.ciclo{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:9px}
+.paso{background:#fff;border:1px solid var(--lin);border-radius:13px;padding:14px;cursor:pointer;transition:.15s}
 .paso:hover{border-color:var(--pur2);transform:translateY(-2px)}
 .paso.on{background:var(--pur);border-color:var(--pur);color:#fff}
-.paso i{display:block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--pur2);margin-bottom:7px}
+.paso.on svg.i{stroke:var(--lima)}
+.paso i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--pur2)}
 .paso.on i{color:var(--lima)}
-.paso b{display:block;font-size:15px;line-height:1.25}
-.paso p{margin:6px 0 0;font-size:12.5px;color:var(--gris)}
-.paso.on p{color:#ddd6fe}
-.det{margin-top:14px;background:#fff;border:1px solid var(--lin);border-left:4px solid var(--pur);border-radius:12px;padding:20px 22px;min-height:96px}
-.det h4{margin:0 0 8px;font-size:19px}
-.det p{margin:0 0 10px;color:#3f3f46}
-.det ul{margin:0;padding-left:18px;color:#3f3f46;font-size:14.5px}
-.det li{margin-bottom:4px}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:12px}
-.f{background:#fff;border:1px solid var(--lin);border-radius:13px;padding:18px}
-.f b{display:block;font-size:15.5px;margin-bottom:6px}
-.f p{margin:0;font-size:13.5px;color:var(--gris)}
-.f.dark{background:var(--navy);color:#fff}.f.dark p{color:#a9a9b2}
-.f.lime{background:var(--lima);border-color:#c9dd4f}.f.lime p{color:#4a5406}
-.dot{width:8px;height:8px;border-radius:99px;background:var(--pur2);display:inline-block;margin-right:7px;vertical-align:1px}
-
-.capas{display:grid;gap:8px}
-.capa{display:grid;grid-template-columns:110px 1fr;gap:14px;background:#fff;border:1px solid var(--lin);border-radius:12px;padding:14px 16px;align-items:center}
-.capa span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--pur);border-right:1px solid var(--lin);padding-right:12px}
-.capa p{margin:0;font-size:14px;color:#3f3f46}
-
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.tabs button{font:inherit;font-size:13.5px;padding:8px 14px;border:1px solid var(--lin);background:#fff;border-radius:99px;cursor:pointer}
-.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
-.pane{display:none;background:#fff;border:1px solid var(--lin);border-radius:13px;padding:20px 22px}
-.pane.on{display:block}
-.pane b.big{font-size:17px;display:block;margin-bottom:6px}
-.chat{background:#faf9f6;border:1px solid var(--lin);border-radius:10px;padding:13px 15px;margin:10px 0;font-size:14.5px}
-.chat.me{border-left:3px solid var(--pur2)}
-.chat small{display:block;color:var(--gris);font-size:11.5px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
-.rx{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.rx span{background:#fff;border:1px solid var(--lin);border-radius:99px;padding:5px 11px;font-size:13.5px;cursor:pointer}
-.rx span:hover{border-color:var(--pur2)}.rx span.on{background:var(--pur);color:#fff;border-color:var(--pur)}
-.out{margin-top:12px;font-size:14px;color:var(--pur);font-weight:600;min-height:20px}
-
-.esc{display:grid;gap:5px;counter-reset:p}
-.esc div{background:#fff;border:1px solid var(--lin);border-radius:10px;padding:11px 15px;display:flex;gap:13px;align-items:baseline;font-size:14.5px}
-.esc div b{color:var(--pur);font-size:12px;letter-spacing:.6px;min-width:74px}
-.esc div.hl{background:var(--lima);border-color:#c9dd4f}
-.no{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}
-.no div{background:#fff;border:1px dashed #d6d3cc;border-radius:11px;padding:13px 15px;font-size:14px;color:#52525b}
-.cta{background:var(--pur);color:#fff;border-radius:16px;padding:30px 28px;margin:50px 0 20px;display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
-.cta b{font-size:22px;letter-spacing:-.5px;display:block}
-.cta p{margin:5px 0 0;color:#ddd6fe;font-size:14.5px}
-.cta a{background:var(--lima);color:#3f4a06;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;font-size:14.5px;white-space:nowrap}
+.paso b{display:block;font-size:14.5px;margin-top:6px;line-height:1.25}
+.hd{display:flex;justify-content:space-between;align-items:center}
+.det{margin-top:12px;background:#fff;border:1px solid var(--lin);border-left:4px solid var(--pur);border-radius:12px;padding:18px 20px}
+.det h4{margin:0 0 10px;font-size:18px}
+.det ul{margin:0;padding-left:0;list-style:none}
+.det li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;color:#3f3f46;margin-bottom:7px}
+.det li svg.i{width:17px;height:17px;margin-top:2px}
+/* features */
+.gr{margin-bottom:26px}
+.gr>h4{display:flex;align-items:center;gap:9px;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--navy);margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--lin)}
+.fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:9px}
+.f{background:#fff;border:1px solid var(--lin);border-radius:12px;padding:14px 15px;cursor:pointer;transition:.15s}
+.f:hover{border-color:var(--pur2)}
+.f>div{display:flex;gap:10px;align-items:center}
+.f b{font-size:14.5px;line-height:1.25}
+.f .mas{margin-left:auto;color:#bdbab3;font-size:18px;line-height:1}
+.f p{margin:10px 0 0;font-size:13.5px;color:var(--gris);display:none}
+.f.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.f.on svg.i{stroke:var(--lima)}.f.on p{display:block;color:#b9b9c2}.f.on .mas{color:var(--lima)}
+/* slack */
+.slack{background:#fff;border:1px solid var(--lin);border-radius:14px;overflow:hidden}
+.slack .bar{background:#3f0f40;color:#fff;padding:9px 15px;font-size:13px;display:flex;gap:8px;align-items:center}
+.slack .bar b{font-weight:600}
+.msg{padding:15px 17px;display:flex;gap:11px}
+.av{width:34px;height:34px;border-radius:7px;background:var(--pur);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:0 0 auto}
+.msg .who{font-size:14px;font-weight:700}.msg .who span{font-weight:400;color:var(--gris);font-size:11.5px;margin-left:7px}
+.msg .app{background:#e8e6f5;color:#5b21b6;font-size:9.5px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:6px;letter-spacing:.5px}
+.q{border-left:3px solid var(--lin);padding:2px 0 2px 11px;margin:9px 0;font-size:14.5px;color:#3f3f46}
+.q.prop{border-left-color:var(--pur2)}
+.q small{display:block;color:var(--gris);font-size:11px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px}
+.rx{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.rx button{font:inherit;font-size:13.5px;background:#f3f3f1;border:1px solid #e0dfda;border-radius:99px;padding:3px 9px;cursor:pointer;display:flex;gap:5px;align-items:center;color:#3f3f46}
+.rx button:hover{border-color:#9a9aa2}
+.rx button.on{background:#e8f2fd;border-color:#1d9bd1;color:#0b4f6c;font-weight:600}
+.rx button i{font-style:normal;font-size:12px}
+.rx .hint{font-size:12px;color:var(--gris);margin-left:4px}
+.out{margin:13px 17px 17px;padding:12px 14px;background:#faf9f6;border:1px dashed var(--lin);border-radius:10px;font-size:14px;color:#3f3f46;min-height:44px}
+.out b{color:var(--pur)}
+.nota{display:flex;gap:9px;align-items:flex-start;background:var(--lima);border:1px solid #c9dd4f;border-radius:11px;padding:12px 14px;font-size:13.5px;color:#3f4a06;margin-bottom:14px}
+.nota svg.i{stroke:#5b6b07}
+/* varios */
+.esc{display:grid;gap:5px}
+.esc div{background:#fff;border:1px solid var(--lin);border-radius:10px;padding:11px 14px;display:flex;gap:11px;align-items:center;font-size:14px}
+.esc div b:first-child{min-width:112px;font-size:11.5px;letter-spacing:.7px;color:var(--pur)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}
+.tabs button{font:inherit;font-size:13.5px;padding:8px 14px;border:1px solid var(--lin);background:#fff;border-radius:99px;cursor:pointer;display:flex;gap:7px;align-items:center}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}.tabs button.on svg.i{stroke:var(--lima)}
+.pane{display:none;background:#fff;border:1px solid var(--lin);border-radius:13px;padding:18px 20px}.pane.on{display:block}
+.capas{display:grid;gap:7px}
+.capa{display:flex;gap:13px;background:#fff;border:1px solid var(--lin);border-radius:12px;padding:13px 15px;align-items:flex-start}
+.capa b{font-size:14.5px;display:block;margin-bottom:3px}.capa p{margin:0;font-size:13.5px;color:var(--gris)}
+.no{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:8px}
+.no div{background:#fff;border:1px dashed #d6d3cc;border-radius:11px;padding:12px 14px;font-size:13.5px;color:#52525b;display:flex;gap:9px;align-items:flex-start}
+.no svg.i{stroke:#a1a1aa;width:18px;height:18px;margin-top:1px}
+.cta{background:var(--pur);color:#fff;border-radius:16px;padding:26px;margin:46px 0 18px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.cta b{font-size:21px;letter-spacing:-.5px;display:block}.cta p{margin:4px 0 0;color:#ddd6fe;font-size:14px}
+.cta a{background:var(--lima);color:#3f4a06;text-decoration:none;font-weight:700;padding:12px 19px;border-radius:10px;font-size:14.5px}
 footer{color:var(--gris);font-size:12.5px;border-top:1px solid var(--lin);padding:18px 0 40px}
-@media(max-width:600px){.capa{grid-template-columns:1fr}.capa span{border:0;padding:0}}
 </style></head><body>
 
-<nav><div class="w" style="padding:0">
-<b>MORENO</b>
-<a href="#ciclo">El ciclo</a><a href="#features">Qué hace</a><a href="#calidad">Calidad</a>
-<a href="#revisar">Revisar</a><a href="#datos">Memoria</a><a href="#limites">Límites</a>
-</div></nav>
+<svg style="display:none">
+<symbol id="filter" viewBox="0 0 24 24"><path d="M3 5h18M6 12h12M10 19h4"/></symbol>
+<symbol id="target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.5-4.5"/></symbol>
+<symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></symbol>
+<symbol id="brain" viewBox="0 0 24 24"><path d="M9 4a3 3 0 013 3v10a3 3 0 01-6 0 3 3 0 01-1-5 3 3 0 011-5 3 3 0 013-3z"/><path d="M15 4a3 3 0 00-3 3v10a3 3 0 006 0 3 3 0 001-5 3 3 0 00-1-5 3 3 0 00-3-3z"/></symbol>
+<symbol id="stairs" viewBox="0 0 24 24"><path d="M3 20h5v-4h5v-4h5V8h3"/></symbol>
+<symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 5H6a2 2 0 00-2 2v9"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-8 8H7l-4 3 1-5a8 8 0 1117-6z"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 1112 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 20a2 2 0 004 0"/></symbol>
+<symbol id="rotate" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7"/><path d="M21 4v5h-5"/></symbol>
+<symbol id="share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 10.8l7.6-3.6M8.2 13.2l7.6 3.6"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6l8-3z"/></symbol>
+<symbol id="chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+<symbol id="ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M6 18L18 6"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+<symbol id="pencil" viewBox="0 0 24 24"><path d="M4 20h4l11-11-4-4L4 16v4z"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
+<symbol id="inbox" viewBox="0 0 24 24"><path d="M3 12l3-8h12l3 8v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6z"/><path d="M3 12h5l1 3h6l1-3h5"/></symbol>
+<symbol id="tag" viewBox="0 0 24 24"><path d="M12 3H5a2 2 0 00-2 2v7l9 9 9-9-9-9z"/><circle cx="8" cy="8" r="1.3"/></symbol>
+<symbol id="send" viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-3-6-7-2z"/></symbol>
+<symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3l9-16z"/><path d="M12 10v4M12 17h.01"/></symbol>
+<symbol id="link" viewBox="0 0 24 24"><path d="M9 15l6-6"/><path d="M14 7l1-1a4 4 0 016 6l-1 1M10 17l-1 1a4 4 0 01-6-6l1-1"/></symbol>
+</svg>
+
+<nav><div class="w" style="padding:0"><b>MORENO</b>
+<a href="#ciclo">Cada hora</a><a href="#features">Qué hace</a><a href="#calidad">Calidad</a>
+<a href="#reacciones">Tu parte</a><a href="#memoria">Memoria</a><a href="#limites">Límites</a></div></nav>
 
 <div class="hero"><div class="w">
-<span class="tagline">Motor de respuesta outbound</span>
-<h1>Contesta el inbox <em>como lo haría el mejor comercial</em> del equipo.</h1>
-<p>Lee cada respuesta, investiga la empresa y a la persona, escribe con criterio, cierra la reunión y persigue lo que se enfría. Cada hora, en todos los clientes.</p>
+<span class="tag">Motor de respuesta outbound</span>
+<h1>Contesta el inbox <em>como el mejor comercial</em> del equipo.</h1>
+<p>Lee, investiga, escribe con criterio, cierra la reunión y persigue lo que se enfría. Cada hora, en todos los clientes.</p>
 <div class="nums">
-<div><b>4</b><span>canales y plataformas</span></div>
-<div><b>21</b><span>módulos de criterio</span></div>
-<div><b>3</b><span>variantes de idioma</span></div>
-<div><b>1 h</b><span>cadencia del barrido</span></div>
-</div>
+<div><b>4</b><span>plataformas</span></div><div><b>21</b><span>módulos de criterio</span></div>
+<div><b>3</b><span>variantes de idioma</span></div><div><b>1 h</b><span>cadencia</span></div></div>
 </div></div>
 
 <section id="ciclo"><div class="w">
-<h2>El ciclo</h2><h3>Seis pasos, cada hora</h3>
-<p class="sub">Pulsa cada paso.</p>
-<div class="ciclo" id="pasos"></div>
-<div class="det" id="det"></div>
+<h2>Cada hora</h2><h3>Seis pasos, siempre en el mismo orden</h3>
+<p class="sub">Pulsa un paso para ver qué hace dentro.</p>
+<div class="ciclo" id="pasos"></div><div class="det" id="det"></div>
 </div></section>
 
 <section id="features"><div class="w">
-<h2>Qué hace</h2><h3>Todo lo que ocurre sin que nadie lo pida</h3>
-<div class="grid">
-<div class="f"><b><span class="dot"></span>Filtra el ruido</b><p>Acuses, emojis, felicitaciones y fuera de oficina se etiquetan y no se contestan. Uno de cada tres mensajes no es una conversación.</p></div>
-<div class="f"><b><span class="dot"></span>Valida el encaje</b><p>Un sí de una empresa fuera del ICP es un no. El encaje se comprueba antes de poner la etiqueta.</p></div>
-<div class="f"><b><span class="dot"></span>Investiga la empresa</b><p>Qué hace, qué tiene montado y qué señal reciente tiene. Obligatorio en todo hilo que se responde.</p></div>
-<div class="f"><b><span class="dot"></span>Investiga a la persona</b><p>Cargo declarado y cargo verificado por separado. Si la autoridad no está confirmada, no se trata como decisor.</p></div>
-<div class="f lime"><b>Sube un peldaño, nunca dos</b><p>Del diagnóstico no se salta a pedir la reunión. Ahí es donde se quema un lead.</p></div>
-<div class="f"><b><span class="dot"></span>Habla en su variante</b><p>España, Argentina o México. La fija el prospecto, no quien firma. Nunca dos mezcladas.</p></div>
-<div class="f"><b><span class="dot"></span>Cierra la reunión</b><p>Consulta huecos reales y propone tres opciones en tres días distintos. Lo antes posible.</p></div>
-<div class="f dark"><b>Recuerda la reunión por la mañana</b><p>A las 9 de la hora del lead, con el enlace real de la videollamada. Así nadie tiene que pedirlo.</p></div>
-<div class="f"><b><span class="dot"></span>Recupera no-shows</b><p>Si falta, reagenda una vez. Si nadie marcó la cita, pregunta al comercial en vez de escribir al lead.</p></div>
-<div class="f"><b><span class="dot"></span>Persigue sin quemar</b><p>Tres toques: retomar, aportar algo nuevo, cerrar con la puerta abierta. Si el lead escribe, se cancela solo.</p></div>
-<div class="f"><b><span class="dot"></span>Gestiona referidos</b><p>Cuando alguien pasa un contacto, lo resuelve, lo mete en la campaña de referidos y no lo deja esperando.</p></div>
-<div class="f"><b><span class="dot"></span>Actualiza el CRM</b><p>Aplica la etiqueta y el pipeline se mueve solo. Para la secuencia cuando toca.</p></div>
-</div>
+<h2>Qué hace</h2><h3>Veinte cosas que ocurren sin que nadie las pida</h3>
+<p class="sub">Pulsa cualquiera para abrirla.</p>
+<div id="grupos"></div>
 </div></section>
 
 <section id="calidad"><div class="w">
 <h2>Calidad</h2><h3>Tres controles antes de que salga un mensaje</h3>
 <div class="tabs" id="tabs">
-<button class="on" data-t="0">Anti-molde</button><button data-t="1">Confianza</button><button data-t="2">Activos</button>
-</div>
+<button class="on" data-t="0"><svg class="i"><use href="#copy"/></svg>Anti-molde</button>
+<button data-t="1"><svg class="i"><use href="#shield"/></svg>Confianza</button>
+<button data-t="2"><svg class="i"><use href="#link"/></svg>Activos</button></div>
 <div class="pane on" id="p0">
-<b class="big">Ningún mensaje se parece a otro</b>
-<p class="sub" style="margin-bottom:14px">Antes de entregar, compara todos los borradores entre sí y con lo enviado en los últimos 30 días. Si dos comparten apertura o argumento, reescribe uno.</p>
-<div class="chat"><small>Antes</small>Gracias, Jorge. Te preguntaba porque a muchos despachos como el tuyo les pasa lo mismo…<br><span style="color:#b91c1c;font-size:13px">El mismo párrafo salió a 22 de 45 leads.</span></div>
-<div class="chat me"><small>Ahora</small>Ahí hay una diferencia: los referidos llegan cuando el otro se acuerda de ti. Con la oficina de CDMX ya abierta, eso cómo lo estás resolviendo ahorita?<br><span style="color:#15803d;font-size:13px">Ángulo propio de esa empresa, con su fuente.</span></div>
+<div class="q"><small>Antes · el mismo párrafo a 22 de 45 leads</small>Gracias, Jorge. Te preguntaba porque a muchos despachos como el tuyo les pasa lo mismo…</div>
+<div class="q prop"><small>Ahora · ángulo propio de esa empresa</small>Ahí hay una diferencia: los referidos llegan cuando el otro se acuerda de ti. Con la oficina de CDMX ya abierta, eso cómo lo estás resolviendo ahorita?</div>
+<div class="esc" style="margin-top:12px"><div><b>Compara</b> todos los borradores entre sí antes de entregar</div>
+<div><b>Y compara</b> con lo enviado en los últimos 30 días</div>
+<div><b>Si coincide</b> reescribe uno, o cambia de activo, o cierra</div></div>
 </div>
-<div class="pane" id="p1">
-<b class="big">La confianza es una resta, no una opinión</b>
-<p class="sub" style="margin-bottom:14px">Arranca en media y sube solo si se cumplen cinco condiciones. Según el resultado, el mensaje sale solo, pide visto bueno o lo coge una persona.</p>
-<div class="esc">
-<div><b>ALTA</b> Etiqueta clara, encaje resuelto, ángulo propio y el activo existe → <b style="color:#15803d;min-width:0">sale solo</b></div>
-<div><b>MEDIA</b> Falla una condición → <b style="color:#b45309;min-width:0">visto bueno en Slack</b></div>
-<div><b>BAJA</b> Caso frontera, dos etiquetas posibles o habría que inventar un dato → <b style="color:#b91c1c;min-width:0">lo coge una persona</b></div>
+<div class="pane" id="p1"><div class="esc">
+<div><b>ALTA</b><svg class="i" style="stroke:#15803d"><use href="#send"/></svg> Etiqueta clara, encaje resuelto, ángulo propio y activo real → <b style="min-width:0;color:#15803d">sale solo</b></div>
+<div><b>MEDIA</b><svg class="i" style="stroke:#b45309"><use href="#chat"/></svg> Falla una condición → <b style="min-width:0;color:#b45309">visto bueno en Slack</b></div>
+<div><b>BAJA</b><svg class="i" style="stroke:#b91c1c"><use href="#user"/></svg> Caso frontera o habría que inventar un dato → <b style="min-width:0;color:#b91c1c">lo coge una persona</b></div>
+</div></div>
+<div class="pane" id="p2"><div class="esc">
+<div><b>OK</b><svg class="i" style="stroke:#15803d"><use href="#check"/></svg> Verificado hoy: se puede enviar</div>
+<div><b>SIN VERIFICAR</b><svg class="i" style="stroke:#b45309"><use href="#eye"/></svg> Existe, nadie lo comprobó: no se ofrece</div>
+<div><b>ROTO</b><svg class="i" style="stroke:#b91c1c"><use href="#warn"/></svg> No se ofrece y se avisa</div>
+<div><b>RETIRADO</b><svg class="i" style="stroke:#71717a"><use href="#ban"/></svg> Prohibido, está en la lista para que no se use por error</div>
+</div></div>
+</div></section>
+
+<section id="reacciones"><div class="w">
+<h2>Tu parte</h2><h3>Una reacción en Slack. Nada más</h3>
+<div class="nota"><svg class="i"><use href="#warn"/></svg>
+<div><b>No son botones.</b> Son reacciones de emoji, las mismas de siempre. MORENO las deja puestas debajo del mensaje, así que solo tienes que pulsar la que ya está ahí. Sin buscar emoji, sin abrir nada.</div></div>
+<div class="slack">
+<div class="bar"><svg class="i" style="stroke:#fff;width:16px;height:16px"><use href="#chat"/></svg><b># wetalkee-a-revisar</b></div>
+<div class="msg"><div class="av">M</div><div style="flex:1">
+<div class="who">MORENO<span class="app">APP</span><span>hoy, 9:14</span></div>
+<div class="q"><small>Jesús Fernández · Grupo Sibuya · escribió</small>Actualmente tenemos cuota fija.</div>
+<div class="q prop"><small>Borrador propuesto · confianza media</small>Vale, cuota fija. Con una red que abre a este ritmo, el local recién abierto paga lo mismo que uno que va lleno todo el año. Esa cuota la absorbe central o se la come cada local, Jesús?</div>
+<div class="rx" id="rx">
+<button data-r="ok"><span>✅</span><i>1</i></button>
+<button data-r="co"><span>✏️</span><i>1</i></button>
+<button data-r="no"><span>⛔</span><i>1</i></button>
+<span class="hint">pulsa una</span></div>
+</div></div>
+<div class="out" id="out">Las tres vienen puestas por MORENO. Al pulsar, el contador sube a 2 y sabe que has sido tú.</div>
 </div>
-</div>
-<div class="pane" id="p2">
-<b class="big">No promete lo que no existe</b>
-<p class="sub" style="margin-bottom:14px">Cada enlace tiene su estado y se comprueba a diario. Si no está verificado, no se ofrece.</p>
-<div class="esc">
-<div><b>OK</b> Verificado, se puede enviar</div>
-<div><b>SIN VERIFICAR</b> Existe pero nadie lo comprobó: no se ofrece</div>
-<div><b>ROTO</b> No se ofrece y se avisa</div>
-<div><b>RETIRADO</b> Prohibido. Está en la lista para que no se use por error</div>
-</div>
+<div class="fs" style="margin-top:12px">
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#user"/></svg><b>Dos personas votan distinto</b><span class="mas">+</span></div><p>No decide por vosotros. Os menciona en el hilo para que lo resolváis.</p></div>
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#pencil"/></svg><b>Tocas el lápiz y no escribes</b><span class="mas">+</span></div><p>Te lo recuerda en una hora, y luego cada día hasta que escribas el texto.</p></div>
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#clock"/></svg><b>Nadie contesta</b><span class="mas">+</span></div><p>Recuerda a las 24 horas. A las 48 lo deja y el lead pasa a gestión manual.</p></div>
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#send"/></svg><b>Tu corrección se envía literal</b><span class="mas">+</span></div><p>No la reescribe. Y la guarda con su causa, para no repetir el fallo.</p></div>
 </div>
 </div></section>
 
-<section id="revisar"><div class="w">
-<h2>Tu parte</h2><h3>Un clic en Slack</h3>
-<p class="sub">Cuando no lo tiene claro, el borrador llega al canal del cliente con las tres reacciones ya puestas. Pruébalo.</p>
-<div class="pane on" style="display:block">
-<div class="chat"><small>El lead dijo</small>Actualmente tenemos cuota fija.</div>
-<div class="chat me"><small>MORENO propone</small>Vale, cuota fija. Con una red que abre a este ritmo, el local recién abierto paga lo mismo que uno que va lleno todo el año. Esa cuota la absorbe central o se la come cada local, Jesús?</div>
-<div class="rx" id="rx"><span data-r="ok">✅ Sale así</span><span data-r="co">✏️ Lo corrijo</span><span data-r="no">⛔ No enviar</span></div>
-<div class="out" id="out">Elige una para ver qué pasa.</div>
-</div>
-<div class="grid" style="margin-top:12px">
-<div class="f"><b>Si dos personas votan distinto</b><p>No decide por vosotros: os menciona en el hilo para que lo resolváis.</p></div>
-<div class="f"><b>Si tocas el lápiz y no escribes</b><p>Te lo recuerda en una hora, y luego cada día hasta que escribas.</p></div>
-<div class="f"><b>Si nadie contesta</b><p>Recuerda a las 24 horas. A las 48 lo deja y pasa a gestión manual.</p></div>
-<div class="f"><b>Tu corrección se envía literal</b><p>No la reescribe. Y la guarda con su causa, para no repetir el fallo.</p></div>
-</div>
-</div></section>
-
-<section id="datos"><div class="w">
+<section id="memoria"><div class="w">
 <h2>Memoria</h2><h3>Cada conversación empieza sabiendo lo de ayer</h3>
 <div class="capas">
-<div class="capa"><span>Criterio</span><p>Cómo se contesta: el árbol de mensajes, la escalera, las etiquetas, la voz y los controles de calidad. Igual para todos los clientes.</p></div>
-<div class="capa"><span>Cliente</span><p>Qué se dice: objetivo, a quién le vendemos, qué tiene montado el prospecto, activos reales y qué no se puede prometer.</p></div>
-<div class="capa"><span>Base</span><p>Lo que cambia: el estado de cada hilo, la cola de seguimientos con su fecha, las reuniones, lo investigado de cada empresa y persona, y la traza.</p></div>
+<div class="capa"><svg class="i"><use href="#brain"/></svg><div><b>Criterio</b><p>Cómo se contesta. Igual para todos los clientes.</p></div></div>
+<div class="capa"><svg class="i"><use href="#tag"/></svg><div><b>Cliente</b><p>Qué se dice. Objetivo, a quién, activos reales y qué no se promete.</p></div></div>
+<div class="capa"><svg class="i"><use href="#db"/></svg><div><b>Base</b><p>Lo que cambia. Estado de cada hilo, cola de seguimientos, reuniones y lo investigado.</p></div></div>
 </div>
-<div class="grid" style="margin-top:12px">
-<div class="f"><b><span class="dot"></span>No repite un ángulo gastado</b><p>Si un argumento ya se usó con esa cuenta y no funcionó, no vuelve a salir.</p></div>
-<div class="f"><b><span class="dot"></span>No repite una pregunta</b><p>Lo que el lead ya contestó no se vuelve a preguntar.</p></div>
-<div class="f"><b><span class="dot"></span>No contesta dos veces</b><p>Un mensaje del lead recibe una sola respuesta, aunque el barrido se repita.</p></div>
-<div class="f"><b><span class="dot"></span>Sabe qué toque convierte</b><p>Con el histórico se ve si el tercer seguimiento sirve o sobra.</p></div>
+<div class="fs" style="margin-top:12px">
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#ban"/></svg><b>No repite un argumento gastado</b><span class="mas">+</span></div><p>Si ya se usó con esa cuenta y no funcionó, no vuelve a salir.</p></div>
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#chat"/></svg><b>No repite una pregunta</b><span class="mas">+</span></div><p>Lo que el lead ya contestó no se vuelve a preguntar en ese hilo.</p></div>
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#shield"/></svg><b>No contesta dos veces</b><span class="mas">+</span></div><p>Un mensaje del lead recibe una sola respuesta, aunque el barrido se repita.</p></div>
+<div class="f" onclick="this.classList.toggle('on')"><div><svg class="i"><use href="#chart"/></svg><b>Sabe qué toque convierte</b><span class="mas">+</span></div><p>Con el histórico se ve si el tercer seguimiento sirve o sobra.</p></div>
 </div>
 </div></section>
 
 <section id="limites"><div class="w">
 <h2>Límites</h2><h3>Lo que no hace, a propósito</h3>
 <div class="no">
-<div>No escribe secuencias nuevas ni monta campañas.</div>
-<div>No da precios en outbound: lleva a la reunión.</div>
-<div>No nombra a la competencia.</div>
-<div>No inventa cifras ni casos de clientes.</div>
-<div>No mueve ni cancela citas del calendario.</div>
-<div>No marca el resultado de una reunión: lo pregunta.</div>
-<div>No envía nada de un cliente sin ficha completa.</div>
-<div>No adjunta archivos: manda enlaces comprobados.</div>
+<div><svg class="i"><use href="#ban"/></svg>No escribe secuencias ni monta campañas</div>
+<div><svg class="i"><use href="#ban"/></svg>No da precios: lleva a la reunión</div>
+<div><svg class="i"><use href="#ban"/></svg>No nombra a la competencia</div>
+<div><svg class="i"><use href="#ban"/></svg>No inventa cifras ni casos</div>
+<div><svg class="i"><use href="#ban"/></svg>No mueve ni cancela citas</div>
+<div><svg class="i"><use href="#ban"/></svg>No marca el resultado de una reunión: lo pregunta</div>
+<div><svg class="i"><use href="#ban"/></svg>No opera un cliente sin ficha completa</div>
+<div><svg class="i"><use href="#ban"/></svg>No adjunta archivos: manda enlaces comprobados</div>
 </div>
-<div class="cta">
-<div><b>La cola de esta semana</b><p>Los mensajes que están esperando visto bueno, con sus seguimientos.</p></div>
-<a href="./">Abrir la revisión</a>
-</div>
+<div class="cta"><div><b>La cola de esta semana</b><p>Los mensajes esperando visto bueno, con sus seguimientos.</p></div>
+<a href="./">Abrir la revisión</a></div>
 <footer>Documento interno de Desorbitante · Sistema MORENO · agosto de 2026</footer>
 </div></section>
 
 <script>
 const P=[
- ["01","Abre el día","Mira su lista y ve qué toca","Antes de leer un solo mensaje nuevo, resuelve lo que ya estaba comprometido.",
-  ["Recuerda las reuniones de hoy con el enlace real de la videollamada","Revisa las citas de ayer: reagenda no-shows y pregunta por las que nadie marcó","Recoge los seguimientos que vencen hoy","Cierra los borradores que aprobasteis en Slack"]],
- ["02","Barre el inbox","Se queda solo con lo accionable","Lee los hilos cuyo último mensaje es del lead y todavía no hemos contestado.",
-  ["Descarta acuses, emojis, felicitaciones y fuera de oficina: se etiquetan y no se responden","Distingue el cliente por la campaña, no por la cuenta","Un cliente en pausa se etiqueta y no se contesta"]],
- ["03","Clasifica","Etiqueta con criterio comercial","Pone una sola etiqueta por lead, y antes comprueba si la empresa encaja.",
-  ["Un sí de una empresa fuera del ICP es un no, no una oportunidad","Calcula cuánto esfuerzo merece la cuenta","La etiqueta es lo que mueve el pipeline del CRM"]],
- ["04","Investiga","Empresa y persona, siempre","Nunca escribe a ciegas. Y empieza por lo que ya sabemos, para no repetir trabajo.",
-  ["Qué hace la empresa, qué tiene montado y qué ha pasado en los últimos meses","Si el cargo que declara la persona lo confirma alguna fuente","Un argumento ya usado con esa cuenta no se repite","Si no hay señal pública, lo dice: no rellena con folleto"]],
- ["05","Escribe","Una idea, una pregunta","Mensaje de chat, de una a tres frases, en la variante del prospecto y con la voz del cliente.",
-  ["Responde primero lo que pidió el lead","Sube un peldaño de la conversación, nunca dos","Ningún mensaje comparte apertura ni argumento con otro","Si no hay nada específico que decir, no manda nada"]],
- ["06","Ejecuta y anota","Envía, etiqueta y deja rastro","Según la confianza, sale solo, pide visto bueno o lo coge una persona.",
-  ["Aplica la etiqueta y para la secuencia si toca","Programa el siguiente toque con su fecha","Escribe qué se dijo y con qué argumento, para el próximo barrido","Avisa al canal del cliente"]]
-];
+["01","sun","Abre el día","Antes de leer nada nuevo, resuelve lo que ya estaba comprometido.",
+ [["bell","Recuerda las reuniones de hoy con el enlace real de la videollamada"],
+  ["rotate","Revisa las citas de ayer: reagenda no-shows y pregunta por las que nadie marcó"],
+  ["clock","Recoge los seguimientos que vencen hoy"],
+  ["check","Cierra los borradores que aprobasteis en Slack"]]],
+["02","inbox","Barre el inbox","Solo los hilos cuyo último mensaje es del lead y siguen sin respuesta.",
+ [["filter","Descarta acuses, emojis, felicitaciones y fuera de oficina: se etiquetan y no se responden"],
+  ["tag","Distingue el cliente por la campaña, no por la cuenta"],
+  ["ban","Un cliente en pausa se etiqueta y no se contesta"]]],
+["03","target","Clasifica","Una sola etiqueta por lead, y antes comprueba si la empresa encaja.",
+ [["target","Un sí de una empresa fuera del ICP es un no, no una oportunidad"],
+  ["chart","Calcula cuánto esfuerzo merece la cuenta"],
+  ["db","La etiqueta es lo que mueve el pipeline del CRM"]]],
+["04","search","Investiga","Nunca escribe a ciegas. Y empieza por lo que ya sabemos.",
+ [["search","Qué hace la empresa, qué tiene montado y qué señal tiene de los últimos meses"],
+  ["user","Si el cargo que declara la persona lo confirma alguna fuente"],
+  ["ban","Un argumento ya usado con esa cuenta no se repite"],
+  ["warn","Si no hay señal pública lo dice: no rellena con folleto"]]],
+["05","pencil","Escribe","Mensaje de chat, corto, en la variante del prospecto.",
+ [["chat","Responde primero lo que pidió el lead"],
+  ["stairs","Sube un peldaño de la conversación, nunca dos"],
+  ["copy","Ningún mensaje comparte apertura ni argumento con otro"],
+  ["ban","Si no hay nada específico que decir, no manda nada"]]],
+["06","send","Ejecuta y anota","Según la confianza: sale solo, pide visto bueno o lo coge una persona.",
+ [["tag","Aplica la etiqueta y para la secuencia si toca"],
+  ["clock","Programa el siguiente toque con su fecha"],
+  ["db","Escribe qué se dijo y con qué argumento, para el próximo barrido"],
+  ["bell","Avisa al canal del cliente"]]]];
+const G=[
+["inbox","Lee y filtra",[
+ ["filter","Filtra el ruido","Acuses, emojis, felicitaciones y fuera de oficina se etiquetan y no se contestan. Uno de cada tres mensajes no es una conversación."],
+ ["target","Valida el encaje","Comprueba si la empresa encaja antes de poner la etiqueta. Un sí de quien no encaja es un no."],
+ ["tag","Sabe de quién es el hilo","Distingue el cliente por la campaña, porque una misma cuenta puede servir a dos clientes."]]],
+["search","Investiga antes de escribir",[
+ ["search","Investiga la empresa","Qué hace de verdad, qué herramientas tiene montadas y qué ha pasado en los últimos meses. Sale un argumento propio, con su fuente."],
+ ["user","Investiga a la persona","Separa el cargo que declara del que confirma una fuente. Si la autoridad no está verificada, no la trata como quien decide."],
+ ["brain","Recuerda lo investigado","Lo aprendido se guarda por empresa y por persona. Si ya se investigó hace poco, no gasta tiempo otra vez."]]],
+["pencil","Escribe con criterio",[
+ ["stairs","Sube un peldaño, nunca dos","Del diagnóstico no salta a pedir la reunión. Ahí es donde se quema un lead."],
+ ["globe","Habla en su variante","España, Argentina o México. La fija el prospecto, no quien firma. Nunca dos mezcladas."],
+ ["copy","Ningún mensaje se parece a otro","Compara los borradores entre sí y con lo enviado en 30 días. Si coinciden, reescribe."],
+ ["chat","Una idea y una pregunta","De una a tres frases. Y lo que pidió el lead va primero."]]],
+["cal","Cierra la reunión",[
+ ["cal","Propone horas reales","Consulta el calendario y ofrece tres opciones en tres días distintos, lo antes posible."],
+ ["bell","Recuerda por la mañana","A las 9 de la hora del lead, con el enlace real de la videollamada. Así nadie tiene que pedirlo."],
+ ["rotate","Recupera los no-shows","Si falta, reagenda una vez. Si nadie marcó la cita, pregunta al comercial en vez de escribir al lead."],
+ ["share","Gestiona los referidos","Cuando alguien pasa un contacto, lo resuelve y lo mete en la campaña. No lo deja esperando."]]],
+["clock","Persigue y aprende",[
+ ["clock","Tres toques, no tres avisos","Retomar, aportar algo nuevo y cerrar con la puerta abierta. Si no hay nada nuevo, se salta al cierre."],
+ ["check","Se cancela solo","Si el lead escribe antes de que venza, el seguimiento desaparece."],
+ ["db","Actualiza el CRM","Aplica la etiqueta y el pipeline se mueve solo. Para la secuencia cuando toca."],
+ ["chart","Mide lo que funciona","Qué argumento convierte, qué toque sobra y cuántos borradores se aprueban sin tocar una coma."]]]];
+
+const ic=n=>`<svg class="i"><use href="#${n}"/></svg>`;
 const cont=document.getElementById('pasos'),det=document.getElementById('det');
-P.forEach((p,i)=>{const d=document.createElement('div');d.className='paso'+(i==0?' on':'');
- d.innerHTML=`<i>${p[0]}</i><b>${p[1]}</b><p>${p[2]}</p>`;d.onclick=()=>sel(i);cont.appendChild(d);});
-function sel(i){[...cont.children].forEach((c,j)=>c.classList.toggle('on',i==j));
- const p=P[i];det.innerHTML=`<h4>${p[1]}</h4><p>${p[3]}</p><ul>${p[4].map(x=>`<li>${x}</li>`).join('')}</ul>`;}
+P.forEach((p,i)=>{const d=document.createElement('div');d.className='paso'+(i?'':' on');
+d.innerHTML=`<div class="hd"><i>${p[0]}</i>${ic(p[1])}</div><b>${p[2]}</b>`;d.onclick=()=>sel(i);cont.appendChild(d);});
+function sel(i){[...cont.children].forEach((c,j)=>c.classList.toggle('on',i==j));const p=P[i];
+det.innerHTML=`<h4>${p[2]}</h4><p style="margin:0 0 12px;color:#3f3f46">${p[3]}</p><ul>${p[4].map(x=>`<li>${ic(x[0])}<span>${x[1]}</span></li>`).join('')}</ul>`;}
 sel(0);
+document.getElementById('grupos').innerHTML=G.map(g=>`<div class="gr"><h4>${ic(g[0])}${g[1]}</h4><div class="fs">`+
+g[2].map(f=>`<div class="f" onclick="this.classList.toggle('on')"><div>${ic(f[0])}<b>${f[1]}</b><span class="mas">+</span></div><p>${f[2]}</p></div>`).join('')+`</div></div>`).join('');
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{
- document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
- document.querySelectorAll('.pane[id^=p]').forEach((p,i)=>p.classList.toggle('on',i==b.dataset.t));});
-const R={ok:"Se envía tal cual. La etiqueta se aplica y el hilo queda anotado.",
- co:"Escribe el texto en el hilo y se envía literal, sin retocarlo. Se guarda como corrección.",
- no:"No se envía. Se etiqueta y el hilo se cierra."};
-document.querySelectorAll('#rx span').forEach(s=>s.onclick=()=>{
- document.querySelectorAll('#rx span').forEach(x=>x.classList.remove('on'));s.classList.add('on');
- document.getElementById('out').textContent=R[s.dataset.r];});
+document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+document.querySelectorAll('.pane[id^=p]').forEach((p,i)=>p.classList.toggle('on',i==b.dataset.t));});
+const R={ok:"<b>✅ Se envía tal cual.</b> Se aplica la etiqueta y el hilo queda anotado.",
+co:"<b>✏️ Escribe el texto en el hilo</b> y se envía literal, sin retocarlo. Se guarda como corrección para no repetir el fallo.",
+no:"<b>⛔ No se envía.</b> Se etiqueta y el hilo se cierra."};
+document.querySelectorAll('#rx button').forEach(b=>b.onclick=()=>{
+document.querySelectorAll('#rx button').forEach(x=>{x.classList.remove('on');x.querySelector('i').textContent='1';});
+b.classList.add('on');b.querySelector('i').textContent='2';
+document.getElementById('out').innerHTML=R[b.dataset.r]+' <span style="color:#6b6b73">El contador subió a 2: así sabe que has reaccionado tú y no él.</span>';});
 </script></body></html>
