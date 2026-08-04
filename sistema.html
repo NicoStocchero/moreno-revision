@@ -14,12 +14,12 @@ nav a:hover{color:#fff;background:#ffffff14}
 .w{max-width:1100px;margin:0 auto;padding:0 18px}
 section{padding:54px 0 6px}
 h2{font-size:11.5px;text-transform:uppercase;letter-spacing:1.7px;color:var(--pur);margin:0 0 8px}
-h3{font-size:29px;line-height:1.14;letter-spacing:-.8px;margin:0 0 24px;max-width:22ch}
-.sub{color:var(--gris);font-size:15.5px;max-width:54ch;margin:-14px 0 22px}
+h3{font-size:29px;line-height:1.14;letter-spacing:-.8px;margin:0 0 22px;max-width:none;text-wrap:balance}
+.sub{color:var(--gris);font-size:15.5px;max-width:66ch;margin:-14px 0 20px}
 .hero{background:var(--navy);color:var(--crema);padding:58px 0 48px}
-.hero h1{font-size:clamp(32px,5.4vw,56px);line-height:1.03;letter-spacing:-1.8px;margin:12px 0 14px;max-width:21ch}
+.hero h1{font-size:clamp(32px,5.4vw,56px);line-height:1.03;letter-spacing:-1.8px;margin:12px 0 14px;max-width:26ch;text-wrap:balance}
 .hero h1 em{font-style:normal;color:var(--lima)}
-.hero p{color:#b9b9c2;font-size:17.5px;max-width:50ch;margin:0}
+.hero p{color:#b9b9c2;font-size:17.5px;max-width:62ch;margin:0}
 .tag{font-size:11.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--pur2);font-weight:700}
 .nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:#ffffff1f;border-radius:14px;overflow:hidden;margin-top:34px}
 .nums div{background:var(--navy);padding:18px 16px}
@@ -42,20 +42,14 @@ h3{font-size:29px;line-height:1.14;letter-spacing:-.8px;margin:0 0 24px;max-widt
 .det li svg.i{width:17px;height:17px;margin-top:2px}
 /* features */
 .gr{margin-bottom:26px}
-.gr>h4{display:flex;align-items:center;gap:10px;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--navy);margin:0 0 10px;padding:9px 12px;border:1px solid var(--lin);border-radius:10px;background:#fff;cursor:pointer;transition:.15s;user-select:none}
-.gr>h4:hover{border-color:var(--pur2)}
-.gr>h4 .n{margin-left:auto;font-size:11px;letter-spacing:.5px;color:var(--gris);font-weight:400;text-transform:none}
-.gr>h4 .mas{width:22px;height:22px;border-radius:6px;background:#f2f0fa;color:var(--pur);display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;font-weight:400}
-.gr.open>h4{background:var(--navy);color:#fff;border-color:var(--navy)}
-.gr.open>h4 svg.i{stroke:var(--lima)}.gr.open>h4 .n{color:#8a8a95}
-.gr.open>h4 .mas{background:#ffffff1f;color:var(--lima)}
-.fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:9px}
-.f{background:#fff;border:1px solid var(--lin);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:9px}
-.f>div{display:flex;gap:10px;align-items:flex-start}
+.gr>h4{display:flex;align-items:center;gap:9px;font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--pur);margin:0 0 9px}
+.gr>h4 .n{margin-left:auto;font-size:11px;letter-spacing:.4px;color:#a3a19a;font-weight:400;text-transform:none}
+.gr>h4:after{content:"";flex:0 0 100%;order:9;height:1px;background:var(--lin);margin-top:8px}
+.fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:9px}
+.f{background:#fff;border:1px solid var(--lin);border-radius:12px;padding:15px;border-left:3px solid var(--pur2)}
+.f>div{display:flex;gap:10px;align-items:flex-start;margin-bottom:7px}
 .f b{font-size:14.5px;line-height:1.3}
-.f p{margin:0;font-size:13.5px;color:var(--gris);display:none}
-.gr.open .f{border-left:3px solid var(--pur2)}
-.gr.open .f p{display:block}
+.f p{margin:0;font-size:13.5px;line-height:1.45;color:var(--gris)}
 /* slack */
 .slack{background:#fff;border:1px solid var(--lin);border-radius:14px;overflow:hidden}
 .slack .bar{background:#3f0f40;color:#fff;padding:9px 15px;font-size:13px;display:flex;gap:8px;align-items:center}
@@ -154,7 +148,8 @@ footer{color:var(--gris);font-size:12.5px;border-top:1px solid var(--lin);paddin
 
 <section id="features"><div class="w">
 <h2>Qué hace</h2><h3>Veinte cosas que ocurren sin que nadie las pida</h3>
-<p class="sub">Pulsa cualquiera para abrirla.</p>
+<p class="sub">Agrupadas por el momento en que pasan.</p>
+
 <div id="grupos"></div>
 </div></section>
 
@@ -205,7 +200,7 @@ footer{color:var(--gris);font-size:12.5px;border-top:1px solid var(--lin);paddin
 <div class="tin"><div class="av" style="width:26px;height:26px;font-size:11px;background:#3f0f40">N</div><span>Escribe aquí el mensaje corregido…</span></div>
 <p class="tnote">Lo que escribas en el hilo se envía al lead <b>tal cual</b>, sin retocarlo. Si solo reaccionas y no escribes, MORENO te lo recuerda en una hora.</p></div>
 </div>
-<div class="gr" style="margin-top:14px"><h4 onclick="ab(this)"><svg class="i"><use href="#warn"/></svg><span>Y si algo se complica</span><span class="n">4 casos</span><span class="mas">+</span></h4><div class="fs">
+<div class="gr" style="margin-top:14px"><h4><svg class="i"><use href="#warn"/></svg><span>Y si algo se complica</span><span class="n">4</span></h4><div class="fs">
 <div class="f"><div><svg class="i"><use href="#user"/></svg><b>Dos personas votan distinto</b></div><p>No decide por vosotros. Os menciona en el hilo para que lo resolváis.</p></div>
 <div class="f"><div><svg class="i"><use href="#pencil"/></svg><b>Tocas el lápiz y no escribes</b></div><p>Te lo recuerda en una hora, y luego cada día hasta que escribas el texto.</p></div>
 <div class="f"><div><svg class="i"><use href="#clock"/></svg><b>Nadie contesta</b></div><p>Recuerda a las 24 horas. A las 48 lo deja y el lead pasa a gestión manual.</p></div>
@@ -220,7 +215,7 @@ footer{color:var(--gris);font-size:12.5px;border-top:1px solid var(--lin);paddin
 <div class="capa"><svg class="i"><use href="#tag"/></svg><div><b>Cliente</b><p>Qué se dice. Objetivo, a quién, activos reales y qué no se promete.</p></div></div>
 <div class="capa"><svg class="i"><use href="#db"/></svg><div><b>Base</b><p>Lo que cambia. Estado de cada hilo, cola de seguimientos, reuniones y lo investigado.</p></div></div>
 </div>
-<div class="gr" style="margin-top:14px"><h4 onclick="ab(this)"><svg class="i"><use href="#brain"/></svg><span>Lo que la memoria evita</span><span class="n">4 funciones</span><span class="mas">+</span></h4><div class="fs">
+<div class="gr" style="margin-top:14px"><h4><svg class="i"><use href="#brain"/></svg><span>Lo que la memoria evita</span><span class="n">4</span></h4><div class="fs">
 <div class="f"><div><svg class="i"><use href="#ban"/></svg><b>No repite un argumento gastado</b></div><p>Si ya se usó con esa cuenta y no funcionó, no vuelve a salir.</p></div>
 <div class="f"><div><svg class="i"><use href="#chat"/></svg><b>No repite una pregunta</b></div><p>Lo que el lead ya contestó no se vuelve a preguntar en ese hilo.</p></div>
 <div class="f"><div><svg class="i"><use href="#shield"/></svg><b>No contesta dos veces</b></div><p>Un mensaje del lead recibe una sola respuesta, aunque el barrido se repita.</p></div>
@@ -307,9 +302,8 @@ d.innerHTML=`<div class="hd"><i>${p[0]}</i>${ic(p[1])}</div><b>${p[2]}</b>`;d.on
 function sel(i){[...cont.children].forEach((c,j)=>c.classList.toggle('on',i==j));const p=P[i];
 det.innerHTML=`<h4>${p[2]}</h4><p style="margin:0 0 12px;color:#3f3f46">${p[3]}</p><ul>${p[4].map(x=>`<li>${ic(x[0])}<span>${x[1]}</span></li>`).join('')}</ul>`;}
 sel(0);
-document.getElementById('grupos').innerHTML=G.map(g=>`<div class="gr"><h4 onclick="ab(this)">${ic(g[0])}<span>${g[1]}</span><span class="n">${g[2].length} funciones</span><span class="mas">+</span></h4><div class="fs">`+
+document.getElementById('grupos').innerHTML=G.map(g=>`<div class="gr"><h4>${ic(g[0])}<span>${g[1]}</span><span class="n">${g[2].length}</span></h4><div class="fs">`+
 g[2].map(f=>`<div class="f"><div>${ic(f[0])}<b>${f[1]}</b></div><p>${f[2]}</p></div>`).join('')+`</div></div>`).join('');
-function ab(h){const g=h.parentNode,o=g.classList.toggle('open');h.querySelector('.mas').textContent=o?'−':'+';}
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{
 document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
 document.querySelectorAll('.pane[id^=p]').forEach((p,i)=>p.classList.toggle('on',i==b.dataset.t));});
