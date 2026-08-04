@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>MORENO · Cómo funciona</title>
+<style>
+:root{--navy:#0c0c0c;--crema:#f5f4f0;--pur:#5b21b6;--pur2:#7c3aed;--lima:#e3f972;--gris:#6b6b73;--lin:#e4e2dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--crema);color:var(--navy);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif}
+nav{position:sticky;top:0;z-index:20;background:rgba(12,12,12,.96);backdrop-filter:blur(6px);padding:0 18px}
+nav div{max-width:1100px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;align-items:center;height:54px}
+nav b{color:#fff;font-size:15px;margin-right:18px;white-space:nowrap}
+nav a{color:#a9a9b2;text-decoration:none;font-size:13px;padding:7px 11px;border-radius:8px;white-space:nowrap}
+nav a:hover{color:#fff;background:#ffffff14}
+.w{max-width:1100px;margin:0 auto;padding:0 18px}
+section{padding:58px 0 10px}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--pur);margin:0 0 8px}
+h3{font-size:30px;line-height:1.15;letter-spacing:-.8px;margin:0 0 10px;max-width:20ch}
+.sub{color:var(--gris);font-size:16px;max-width:56ch;margin:0 0 26px}
+
+.hero{background:var(--navy);color:var(--crema);padding:64px 0 54px;margin-bottom:8px}
+.hero h1{font-size:clamp(34px,5.6vw,60px);line-height:1.02;letter-spacing:-2px;margin:14px 0 16px;max-width:22ch}
+.hero h1 em{font-style:normal;color:var(--lima)}
+.hero p{color:#b9b9c2;font-size:18px;max-width:52ch;margin:0}
+.tagline{font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:var(--pur2);font-weight:700}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:#ffffff1f;border-radius:14px;overflow:hidden;margin-top:38px}
+.nums div{background:var(--navy);padding:20px 18px}
+.nums b{display:block;font-size:32px;letter-spacing:-1px;color:var(--lima)}
+.nums span{font-size:11.5px;text-transform:uppercase;letter-spacing:.9px;color:#8a8a95}
+
+.ciclo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.paso{background:#fff;border:1px solid var(--lin);border-radius:13px;padding:16px;cursor:pointer;transition:.15s;position:relative}
+.paso:hover{border-color:var(--pur2);transform:translateY(-2px)}
+.paso.on{background:var(--pur);border-color:var(--pur);color:#fff}
+.paso i{display:block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--pur2);margin-bottom:7px}
+.paso.on i{color:var(--lima)}
+.paso b{display:block;font-size:15px;line-height:1.25}
+.paso p{margin:6px 0 0;font-size:12.5px;color:var(--gris)}
+.paso.on p{color:#ddd6fe}
+.det{margin-top:14px;background:#fff;border:1px solid var(--lin);border-left:4px solid var(--pur);border-radius:12px;padding:20px 22px;min-height:96px}
+.det h4{margin:0 0 8px;font-size:19px}
+.det p{margin:0 0 10px;color:#3f3f46}
+.det ul{margin:0;padding-left:18px;color:#3f3f46;font-size:14.5px}
+.det li{margin-bottom:4px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:12px}
+.f{background:#fff;border:1px solid var(--lin);border-radius:13px;padding:18px}
+.f b{display:block;font-size:15.5px;margin-bottom:6px}
+.f p{margin:0;font-size:13.5px;color:var(--gris)}
+.f.dark{background:var(--navy);color:#fff}.f.dark p{color:#a9a9b2}
+.f.lime{background:var(--lima);border-color:#c9dd4f}.f.lime p{color:#4a5406}
+.dot{width:8px;height:8px;border-radius:99px;background:var(--pur2);display:inline-block;margin-right:7px;vertical-align:1px}
+
+.capas{display:grid;gap:8px}
+.capa{display:grid;grid-template-columns:110px 1fr;gap:14px;background:#fff;border:1px solid var(--lin);border-radius:12px;padding:14px 16px;align-items:center}
+.capa span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--pur);border-right:1px solid var(--lin);padding-right:12px}
+.capa p{margin:0;font-size:14px;color:#3f3f46}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tabs button{font:inherit;font-size:13.5px;padding:8px 14px;border:1px solid var(--lin);background:#fff;border-radius:99px;cursor:pointer}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pane{display:none;background:#fff;border:1px solid var(--lin);border-radius:13px;padding:20px 22px}
+.pane.on{display:block}
+.pane b.big{font-size:17px;display:block;margin-bottom:6px}
+.chat{background:#faf9f6;border:1px solid var(--lin);border-radius:10px;padding:13px 15px;margin:10px 0;font-size:14.5px}
+.chat.me{border-left:3px solid var(--pur2)}
+.chat small{display:block;color:var(--gris);font-size:11.5px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
+.rx{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.rx span{background:#fff;border:1px solid var(--lin);border-radius:99px;padding:5px 11px;font-size:13.5px;cursor:pointer}
+.rx span:hover{border-color:var(--pur2)}.rx span.on{background:var(--pur);color:#fff;border-color:var(--pur)}
+.out{margin-top:12px;font-size:14px;color:var(--pur);font-weight:600;min-height:20px}
+
+.esc{display:grid;gap:5px;counter-reset:p}
+.esc div{background:#fff;border:1px solid var(--lin);border-radius:10px;padding:11px 15px;display:flex;gap:13px;align-items:baseline;font-size:14.5px}
+.esc div b{color:var(--pur);font-size:12px;letter-spacing:.6px;min-width:74px}
+.esc div.hl{background:var(--lima);border-color:#c9dd4f}
+.no{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}
+.no div{background:#fff;border:1px dashed #d6d3cc;border-radius:11px;padding:13px 15px;font-size:14px;color:#52525b}
+.cta{background:var(--pur);color:#fff;border-radius:16px;padding:30px 28px;margin:50px 0 20px;display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+.cta b{font-size:22px;letter-spacing:-.5px;display:block}
+.cta p{margin:5px 0 0;color:#ddd6fe;font-size:14.5px}
+.cta a{background:var(--lima);color:#3f4a06;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;font-size:14.5px;white-space:nowrap}
+footer{color:var(--gris);font-size:12.5px;border-top:1px solid var(--lin);padding:18px 0 40px}
+@media(max-width:600px){.capa{grid-template-columns:1fr}.capa span{border:0;padding:0}}
+</style></head><body>
+
+<nav><div class="w" style="padding:0">
+<b>MORENO</b>
+<a href="#ciclo">El ciclo</a><a href="#features">Qué hace</a><a href="#calidad">Calidad</a>
+<a href="#revisar">Revisar</a><a href="#datos">Memoria</a><a href="#limites">Límites</a>
+</div></nav>
+
+<div class="hero"><div class="w">
+<span class="tagline">Motor de respuesta outbound</span>
+<h1>Contesta el inbox <em>como lo haría el mejor comercial</em> del equipo.</h1>
+<p>Lee cada respuesta, investiga la empresa y a la persona, escribe con criterio, cierra la reunión y persigue lo que se enfría. Cada hora, en todos los clientes.</p>
+<div class="nums">
+<div><b>4</b><span>canales y plataformas</span></div>
+<div><b>21</b><span>módulos de criterio</span></div>
+<div><b>3</b><span>variantes de idioma</span></div>
+<div><b>1 h</b><span>cadencia del barrido</span></div>
+</div>
+</div></div>
+
+<section id="ciclo"><div class="w">
+<h2>El ciclo</h2><h3>Seis pasos, cada hora</h3>
+<p class="sub">Pulsa cada paso.</p>
+<div class="ciclo" id="pasos"></div>
+<div class="det" id="det"></div>
+</div></section>
+
+<section id="features"><div class="w">
+<h2>Qué hace</h2><h3>Todo lo que ocurre sin que nadie lo pida</h3>
+<div class="grid">
+<div class="f"><b><span class="dot"></span>Filtra el ruido</b><p>Acuses, emojis, felicitaciones y fuera de oficina se etiquetan y no se contestan. Uno de cada tres mensajes no es una conversación.</p></div>
+<div class="f"><b><span class="dot"></span>Valida el encaje</b><p>Un sí de una empresa fuera del ICP es un no. El encaje se comprueba antes de poner la etiqueta.</p></div>
+<div class="f"><b><span class="dot"></span>Investiga la empresa</b><p>Qué hace, qué tiene montado y qué señal reciente tiene. Obligatorio en todo hilo que se responde.</p></div>
+<div class="f"><b><span class="dot"></span>Investiga a la persona</b><p>Cargo declarado y cargo verificado por separado. Si la autoridad no está confirmada, no se trata como decisor.</p></div>
+<div class="f lime"><b>Sube un peldaño, nunca dos</b><p>Del diagnóstico no se salta a pedir la reunión. Ahí es donde se quema un lead.</p></div>
+<div class="f"><b><span class="dot"></span>Habla en su variante</b><p>España, Argentina o México. La fija el prospecto, no quien firma. Nunca dos mezcladas.</p></div>
+<div class="f"><b><span class="dot"></span>Cierra la reunión</b><p>Consulta huecos reales y propone tres opciones en tres días distintos. Lo antes posible.</p></div>
+<div class="f dark"><b>Recuerda la reunión por la mañana</b><p>A las 9 de la hora del lead, con el enlace real de la videollamada. Así nadie tiene que pedirlo.</p></div>
+<div class="f"><b><span class="dot"></span>Recupera no-shows</b><p>Si falta, reagenda una vez. Si nadie marcó la cita, pregunta al comercial en vez de escribir al lead.</p></div>
+<div class="f"><b><span class="dot"></span>Persigue sin quemar</b><p>Tres toques: retomar, aportar algo nuevo, cerrar con la puerta abierta. Si el lead escribe, se cancela solo.</p></div>
+<div class="f"><b><span class="dot"></span>Gestiona referidos</b><p>Cuando alguien pasa un contacto, lo resuelve, lo mete en la campaña de referidos y no lo deja esperando.</p></div>
+<div class="f"><b><span class="dot"></span>Actualiza el CRM</b><p>Aplica la etiqueta y el pipeline se mueve solo. Para la secuencia cuando toca.</p></div>
+</div>
+</div></section>
+
+<section id="calidad"><div class="w">
+<h2>Calidad</h2><h3>Tres controles antes de que salga un mensaje</h3>
+<div class="tabs" id="tabs">
+<button class="on" data-t="0">Anti-molde</button><button data-t="1">Confianza</button><button data-t="2">Activos</button>
+</div>
+<div class="pane on" id="p0">
+<b class="big">Ningún mensaje se parece a otro</b>
+<p class="sub" style="margin-bottom:14px">Antes de entregar, compara todos los borradores entre sí y con lo enviado en los últimos 30 días. Si dos comparten apertura o argumento, reescribe uno.</p>
+<div class="chat"><small>Antes</small>Gracias, Jorge. Te preguntaba porque a muchos despachos como el tuyo les pasa lo mismo…<br><span style="color:#b91c1c;font-size:13px">El mismo párrafo salió a 22 de 45 leads.</span></div>
+<div class="chat me"><small>Ahora</small>Ahí hay una diferencia: los referidos llegan cuando el otro se acuerda de ti. Con la oficina de CDMX ya abierta, eso cómo lo estás resolviendo ahorita?<br><span style="color:#15803d;font-size:13px">Ángulo propio de esa empresa, con su fuente.</span></div>
+</div>
+<div class="pane" id="p1">
+<b class="big">La confianza es una resta, no una opinión</b>
+<p class="sub" style="margin-bottom:14px">Arranca en media y sube solo si se cumplen cinco condiciones. Según el resultado, el mensaje sale solo, pide visto bueno o lo coge una persona.</p>
+<div class="esc">
+<div><b>ALTA</b> Etiqueta clara, encaje resuelto, ángulo propio y el activo existe → <b style="color:#15803d;min-width:0">sale solo</b></div>
+<div><b>MEDIA</b> Falla una condición → <b style="color:#b45309;min-width:0">visto bueno en Slack</b></div>
+<div><b>BAJA</b> Caso frontera, dos etiquetas posibles o habría que inventar un dato → <b style="color:#b91c1c;min-width:0">lo coge una persona</b></div>
+</div>
+</div>
+<div class="pane" id="p2">
+<b class="big">No promete lo que no existe</b>
+<p class="sub" style="margin-bottom:14px">Cada enlace tiene su estado y se comprueba a diario. Si no está verificado, no se ofrece.</p>
+<div class="esc">
+<div><b>OK</b> Verificado, se puede enviar</div>
+<div><b>SIN VERIFICAR</b> Existe pero nadie lo comprobó: no se ofrece</div>
+<div><b>ROTO</b> No se ofrece y se avisa</div>
+<div><b>RETIRADO</b> Prohibido. Está en la lista para que no se use por error</div>
+</div>
+</div>
+</div></section>
+
+<section id="revisar"><div class="w">
+<h2>Tu parte</h2><h3>Un clic en Slack</h3>
+<p class="sub">Cuando no lo tiene claro, el borrador llega al canal del cliente con las tres reacciones ya puestas. Pruébalo.</p>
+<div class="pane on" style="display:block">
+<div class="chat"><small>El lead dijo</small>Actualmente tenemos cuota fija.</div>
+<div class="chat me"><small>MORENO propone</small>Vale, cuota fija. Con una red que abre a este ritmo, el local recién abierto paga lo mismo que uno que va lleno todo el año. Esa cuota la absorbe central o se la come cada local, Jesús?</div>
+<div class="rx" id="rx"><span data-r="ok">✅ Sale así</span><span data-r="co">✏️ Lo corrijo</span><span data-r="no">⛔ No enviar</span></div>
+<div class="out" id="out">Elige una para ver qué pasa.</div>
+</div>
+<div class="grid" style="margin-top:12px">
+<div class="f"><b>Si dos personas votan distinto</b><p>No decide por vosotros: os menciona en el hilo para que lo resolváis.</p></div>
+<div class="f"><b>Si tocas el lápiz y no escribes</b><p>Te lo recuerda en una hora, y luego cada día hasta que escribas.</p></div>
+<div class="f"><b>Si nadie contesta</b><p>Recuerda a las 24 horas. A las 48 lo deja y pasa a gestión manual.</p></div>
+<div class="f"><b>Tu corrección se envía literal</b><p>No la reescribe. Y la guarda con su causa, para no repetir el fallo.</p></div>
+</div>
+</div></section>
+
+<section id="datos"><div class="w">
+<h2>Memoria</h2><h3>Cada conversación empieza sabiendo lo de ayer</h3>
+<div class="capas">
+<div class="capa"><span>Criterio</span><p>Cómo se contesta: el árbol de mensajes, la escalera, las etiquetas, la voz y los controles de calidad. Igual para todos los clientes.</p></div>
+<div class="capa"><span>Cliente</span><p>Qué se dice: objetivo, a quién le vendemos, qué tiene montado el prospecto, activos reales y qué no se puede prometer.</p></div>
+<div class="capa"><span>Base</span><p>Lo que cambia: el estado de cada hilo, la cola de seguimientos con su fecha, las reuniones, lo investigado de cada empresa y persona, y la traza.</p></div>
+</div>
+<div class="grid" style="margin-top:12px">
+<div class="f"><b><span class="dot"></span>No repite un ángulo gastado</b><p>Si un argumento ya se usó con esa cuenta y no funcionó, no vuelve a salir.</p></div>
+<div class="f"><b><span class="dot"></span>No repite una pregunta</b><p>Lo que el lead ya contestó no se vuelve a preguntar.</p></div>
+<div class="f"><b><span class="dot"></span>No contesta dos veces</b><p>Un mensaje del lead recibe una sola respuesta, aunque el barrido se repita.</p></div>
+<div class="f"><b><span class="dot"></span>Sabe qué toque convierte</b><p>Con el histórico se ve si el tercer seguimiento sirve o sobra.</p></div>
+</div>
+</div></section>
+
+<section id="limites"><div class="w">
+<h2>Límites</h2><h3>Lo que no hace, a propósito</h3>
+<div class="no">
+<div>No escribe secuencias nuevas ni monta campañas.</div>
+<div>No da precios en outbound: lleva a la reunión.</div>
+<div>No nombra a la competencia.</div>
+<div>No inventa cifras ni casos de clientes.</div>
+<div>No mueve ni cancela citas del calendario.</div>
+<div>No marca el resultado de una reunión: lo pregunta.</div>
+<div>No envía nada de un cliente sin ficha completa.</div>
+<div>No adjunta archivos: manda enlaces comprobados.</div>
+</div>
+<div class="cta">
+<div><b>La cola de esta semana</b><p>Los mensajes que están esperando visto bueno, con sus seguimientos.</p></div>
+<a href="./">Abrir la revisión</a>
+</div>
+<footer>Documento interno de Desorbitante · Sistema MORENO · agosto de 2026</footer>
+</div></section>
+
+<script>
+const P=[
+ ["01","Abre el día","Mira su lista y ve qué toca","Antes de leer un solo mensaje nuevo, resuelve lo que ya estaba comprometido.",
+  ["Recuerda las reuniones de hoy con el enlace real de la videollamada","Revisa las citas de ayer: reagenda no-shows y pregunta por las que nadie marcó","Recoge los seguimientos que vencen hoy","Cierra los borradores que aprobasteis en Slack"]],
+ ["02","Barre el inbox","Se queda solo con lo accionable","Lee los hilos cuyo último mensaje es del lead y todavía no hemos contestado.",
+  ["Descarta acuses, emojis, felicitaciones y fuera de oficina: se etiquetan y no se responden","Distingue el cliente por la campaña, no por la cuenta","Un cliente en pausa se etiqueta y no se contesta"]],
+ ["03","Clasifica","Etiqueta con criterio comercial","Pone una sola etiqueta por lead, y antes comprueba si la empresa encaja.",
+  ["Un sí de una empresa fuera del ICP es un no, no una oportunidad","Calcula cuánto esfuerzo merece la cuenta","La etiqueta es lo que mueve el pipeline del CRM"]],
+ ["04","Investiga","Empresa y persona, siempre","Nunca escribe a ciegas. Y empieza por lo que ya sabemos, para no repetir trabajo.",
+  ["Qué hace la empresa, qué tiene montado y qué ha pasado en los últimos meses","Si el cargo que declara la persona lo confirma alguna fuente","Un argumento ya usado con esa cuenta no se repite","Si no hay señal pública, lo dice: no rellena con folleto"]],
+ ["05","Escribe","Una idea, una pregunta","Mensaje de chat, de una a tres frases, en la variante del prospecto y con la voz del cliente.",
+  ["Responde primero lo que pidió el lead","Sube un peldaño de la conversación, nunca dos","Ningún mensaje comparte apertura ni argumento con otro","Si no hay nada específico que decir, no manda nada"]],
+ ["06","Ejecuta y anota","Envía, etiqueta y deja rastro","Según la confianza, sale solo, pide visto bueno o lo coge una persona.",
+  ["Aplica la etiqueta y para la secuencia si toca","Programa el siguiente toque con su fecha","Escribe qué se dijo y con qué argumento, para el próximo barrido","Avisa al canal del cliente"]]
+];
+const cont=document.getElementById('pasos'),det=document.getElementById('det');
+P.forEach((p,i)=>{const d=document.createElement('div');d.className='paso'+(i==0?' on':'');
+ d.innerHTML=`<i>${p[0]}</i><b>${p[1]}</b><p>${p[2]}</p>`;d.onclick=()=>sel(i);cont.appendChild(d);});
+function sel(i){[...cont.children].forEach((c,j)=>c.classList.toggle('on',i==j));
+ const p=P[i];det.innerHTML=`<h4>${p[1]}</h4><p>${p[3]}</p><ul>${p[4].map(x=>`<li>${x}</li>`).join('')}</ul>`;}
+sel(0);
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+ document.querySelectorAll('.pane[id^=p]').forEach((p,i)=>p.classList.toggle('on',i==b.dataset.t));});
+const R={ok:"Se envía tal cual. La etiqueta se aplica y el hilo queda anotado.",
+ co:"Escribe el texto en el hilo y se envía literal, sin retocarlo. Se guarda como corrección.",
+ no:"No se envía. Se etiqueta y el hilo se cierra."};
+document.querySelectorAll('#rx span').forEach(s=>s.onclick=()=>{
+ document.querySelectorAll('#rx span').forEach(x=>x.classList.remove('on'));s.classList.add('on');
+ document.getElementById('out').textContent=R[s.dataset.r];});
+</script></body></html>
