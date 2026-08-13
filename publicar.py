@@ -51,6 +51,8 @@ def leer_xlsx(ruta):
         else:
             vistos[h] = 0; cols.append(h)
 
+    comprobar_columnas(set(cols))
+
     filas = []
     for fila in hoja.iter_rows(min_row=2, values_only=True):
         if not fila or not fila[0]: continue
@@ -62,6 +64,20 @@ def leer_xlsx(ruta):
         reg['fl'] = str(fechas[1]).strip() if len(fechas) > 1 else ""
         filas.append(reg)
     return filas
+
+CRITICAS = ['cli', 'lead', 'g', 'msg', 'nuestro', 'lead_msg', 'tag', 'conf']
+
+def comprobar_columnas(hoja_cols):
+    """Avisa de lo que falta. Para si falta algo sin lo que la página no se entiende."""
+    faltan = [k for k in CAMPOS if k not in hoja_cols]
+    if faltan:
+        print('AVISO: el xlsx no trae estas columnas y saldrán vacías:')
+        for f in faltan: print('   - %s' % f)
+    criticas = [v for k, v in CAMPOS.items() if k not in hoja_cols and v in CRITICAS]
+    if criticas:
+        print('ERROR: faltan columnas sin las que la revisión no se entiende: %s' % criticas)
+        print('       Revisa que los nombres de la hoja Leads son los del prompt.')
+        sys.exit(1)
 
 def numeros(filas):
     from collections import Counter
@@ -130,6 +146,13 @@ def main():
     ap.add_argument('--contenido', required=True,
                     help='JSON con controles, cambios y sugerencias de esta revisión')
     a = ap.parse_args()
+
+    if not re.match(r'^\d{4}-\d{2}-\d{2}$', a.fecha):
+        print('ERROR: la fecha va en formato AAAA-MM-DD'); sys.exit(1)
+    try:
+        date.fromisoformat(a.fecha)
+    except ValueError:
+        print('ERROR: %s no es una fecha real' % a.fecha); sys.exit(1)
 
     filas = leer_xlsx(a.xlsx)
     if not filas:
