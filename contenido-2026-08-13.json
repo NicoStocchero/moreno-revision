@@ -1,0 +1,101 @@
+{
+ "controles": [
+  {
+   "lab": "Control · ficha ausente",
+   "val": "0 de 3",
+   "note": "Urban Ponics no tiene ficha. Se metió a propósito. MORENO clasificó y se negó a escribir copy de venta."
+  },
+  {
+   "lab": "Control · ceguera",
+   "val": "0 fugas",
+   "note": "El corte lo hizo código sobre 937 hilos antes de repartir. En la pasada anterior se rompió en 7 de 21."
+  },
+  {
+   "lab": "Confianza declarada",
+   "val": "4 alta · 33 media · 9 baja",
+   "note": "El 3 de agosto se declaró alta en 53 de 59 hilos y no investigó a casi nadie."
+  },
+  {
+   "lab": "Molde",
+   "val": "2 de 33",
+   "note": "Dos borradores compartían esqueleto. Se reescribieron. El 3 de agosto fueron 22 de 45."
+  }
+ ],
+ "cambios": [
+  {
+   "titulo": "Ver el mensaje al que se responde",
+   "estado": "Hecho",
+   "antes": "La cola mostraba lo que dijo el lead y lo que MORENO contestaba. Nuestro turno anterior no aparecía, así que había que deducir a qué estaba respondiendo.",
+   "ahora": "Cada hilo abre con nuestro mensaje literal, su fecha y a qué toque del árbol corresponde.",
+   "cita": "\"Si no, tenemos que interpretar qué fue lo que nosotros le dijimos para entender si está o no está del todo correcto.\""
+  },
+  {
+   "titulo": "No repreguntar. La regla de Carlos",
+   "estado": "Hecho",
+   "antes": "MORENO encadenaba preguntas de descubrimiento sin decir a qué nos dedicamos.",
+   "ahora": "Después de la primera pregunta no va otra abierta. En los 33 borradores no hay ni una segunda pregunta abierta."
+  },
+  {
+   "titulo": "La respuesta va por etiqueta",
+   "estado": "Hecho",
+   "antes": "Todos los hilos recibían el mismo tratamiento, así que a quien solo pedía el enlace se le soltaba el discurso entero.",
+   "ahora": "Los 19 tags repartidos en cuatro grupos: conversación, acción inmediata, espera y cierre. Cada grupo decide qué aporta el mensaje y con qué cierra."
+  },
+  {
+   "titulo": "Referido: pedir el contacto",
+   "estado": "Hecho",
+   "antes": "\"Te dejo los casos por si te sirven\" con un enlace, dejando el trabajo en manos del referidor.",
+   "ahora": "Se pide el correo o el perfil en la misma respuesta. Excepción: si el referidor se ofrece a hacer la introducción, se espera y se recuerda a los 5 o 7 días."
+  },
+  {
+   "titulo": "Cuarto toque a los dos meses",
+   "estado": "Hecho",
+   "antes": "Tres toques y cierre. El toque de recuperación estaba escrito pero el tope de la configuración era 3.",
+   "ahora": "Cuatro toques en los cinco clientes, con las fechas calculadas en cada hilo."
+  },
+  {
+   "titulo": "Que no suene a inteligencia artificial",
+   "estado": "Hecho",
+   "antes": "Un 6 sobre 10. Mensajes de 62 palabras de media, todos abriendo igual, y 22 de 45 con el mismo molde.",
+   "ahora": "Lista negra de huellas por idioma, prohibido el testimonio inventado, y el control de molde compara estructura y no palabras."
+  },
+  {
+   "titulo": "La firma al editar desde Slack",
+   "estado": "Pendiente",
+   "antes": "Preguntaste si al reescribir el texto en el hilo se sigue aplicando la firma de la cuenta.",
+   "ahora": "Sin resolver. Va con el circuito de aprobación de Slack, que todavía no está montado."
+  },
+  {
+   "titulo": "Recordatorios de reunión en GoHighLevel",
+   "estado": "Fuera de MORENO",
+   "antes": "MORENO recordaba las reuniones del día al lead.",
+   "ahora": "Retirado de su alcance: esa lógica aplica también a Meta y Google Ads, así que vive en GoHighLevel."
+  }
+ ],
+ "sugerencias": [
+  {
+   "titulo": "Dar más de una forma válida al mensaje",
+   "quien": "Decisión técnica · Nico",
+   "texto": [
+    "El propio barrido lo detectó: dos borradores de <strong>clientes distintos</strong>, Serdel y Offitravel, salieron con el mismo esqueleto. Si el molde cruza fichas, está en el motor.",
+    "27 de 33 borradores tienen exactamente tres frases y 22 de 33 siguen la misma forma. Hay que dar tres o cuatro esqueletos alternativos y que el control de lote los reparta."
+   ]
+  },
+  {
+   "titulo": "Dejar de filtrar por hasReply en HeyReach",
+   "quien": "Decisión técnica · Nico",
+   "texto": [
+    "De 937 conversaciones marcadas con respuesta, <strong>solo 248 tienen un mensaje real del lead</strong>. El flag cuenta también la aceptación de conexión. Es un 74 por ciento de ruido.",
+    "Afecta a cualquier automatización que dispare sobre ese campo, no solo a MORENO."
+   ]
+  },
+  {
+   "titulo": "Revisar dos frases que siguen saliendo en campaña",
+   "quien": "Copy de campaña · Nico y Carlos",
+   "texto": [
+    "En Offitravel, el toque 2 de una campaña viva dice que las agencias revenden circuitos completos bajo su marca. Eso no es lo que se ofrece. En Serdel, el toque 2 vende los 35 años operando como estudio, que el brief prohíbe.",
+    "MORENO ya está protegido de repetirlo, pero los correos se siguen enviando."
+   ]
+  }
+ ]
+}

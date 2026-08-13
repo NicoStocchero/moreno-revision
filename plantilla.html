@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>MORENO · Revisión de cola · {{FECHA}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0c0c0c; --crema:#f5f4f0; --purp:#5b21b6; --purp-lt:#7c3aed; --lima:#e3f972;
+  --tinta:#1a1a1a; --gris:#6b6b66; --linea:#dedbd2; --papel:#fffefb;
+  --ok:#1f7a4d; --alerta:#a8541b;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Instrument Sans',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--crema);color:var(--tinta);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:var(--disp);margin:0;letter-spacing:-.02em}
+a{color:var(--purp)}
+.mono{font-family:var(--mono)}
+
+/* ---------- HERO ---------- */
+.hero{background:var(--navy);color:var(--crema);padding:56px 0 44px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:auto -10% -60% 55%;height:340px;background:radial-gradient(closest-side,rgba(124,58,237,.55),transparent 70%);pointer-events:none}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--lima)}
+.hero h1{font-size:clamp(38px,6.5vw,74px);line-height:.97;font-weight:900;margin:16px 0 0;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--lima)}
+.hero p.sub{max-width:58ch;color:#c9c7c0;margin:20px 0 0;font-size:17px;position:relative;z-index:1}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;background:#2a2a2a;border:1px solid #2a2a2a;margin-top:40px;position:relative;z-index:1}
+.ctl{background:var(--navy);padding:20px}
+.ctl .lab{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8b8b84}
+.ctl .val{font-family:var(--disp);font-size:30px;font-weight:800;color:var(--lima);line-height:1.1;margin-top:8px}
+.ctl .val.sm{font-size:22px}
+.ctl .note{font-size:13px;color:#a3a29b;margin-top:6px;line-height:1.4}
+
+/* ---------- SECCIONES ---------- */
+section{padding:64px 0;border-bottom:1px solid var(--linea)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(26px,3.4vw,38px);font-weight:800}
+.sec-head .n{font-family:var(--mono);font-size:11px;color:var(--purp);letter-spacing:.14em;border:1px solid var(--purp);padding:3px 8px;border-radius:2px}
+.lede{max-width:70ch;color:#3d3d3a;font-size:17px;margin:0 0 32px}
+
+/* ---------- CAMBIOS ---------- */
+.cambio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--linea);background:var(--papel);margin-bottom:14px}
+.cambio > div{padding:20px 22px}
+.cambio .antes{background:#f0eee7;border-right:1px solid var(--linea)}
+.cambio h4{font-size:16px;font-weight:700;margin-bottom:6px}
+.cambio .tit{grid-column:1/-1;background:var(--navy);color:var(--crema);padding:12px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.cambio .tit h3{font-size:17px;font-weight:700}
+.tag-mini{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.t-hecho{background:var(--lima);color:var(--navy)}
+.t-pend{background:#4a4a4a;color:#e5e5e0}
+.cambio p{margin:0;font-size:14.5px;color:#4a4a46;line-height:1.5}
+.cambio .antes p{color:#6b6b64}
+.quote{border-left:3px solid var(--purp-lt);padding-left:14px;font-size:14.5px;color:#3d3d3a;font-style:italic;margin:10px 0 0}
+
+/* ---------- FILTROS ---------- */
+.bar{position:sticky;top:0;z-index:30;background:var(--crema);border-bottom:1px solid var(--linea);padding:12px 0 10px;box-shadow:0 6px 18px -14px rgba(0,0,0,.35)}
+.frow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.frow:last-child{margin-bottom:0}
+.flab{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);width:74px;flex:none}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:6px 11px;border:1px solid var(--linea);background:var(--papel);color:#55554f;cursor:pointer;border-radius:2px;transition:.12s;display:inline-flex;align-items:center;gap:7px;line-height:1.2}
+.chip:hover{border-color:var(--purp-lt);color:var(--purp)}
+.chip[aria-pressed="true"]{background:var(--navy);color:var(--lima);border-color:var(--navy)}
+.chip[disabled]{opacity:.32;cursor:default;pointer-events:none}
+.chip .c{opacity:.55;font-size:10px}
+.chip .fl{font-size:13px;line-height:1}
+.buscar{flex:1;min-width:200px;max-width:340px;font-family:var(--body);font-size:14px;padding:7px 11px;border:1px solid var(--linea);background:var(--papel);border-radius:2px;color:var(--tinta)}
+.buscar::placeholder{color:#9d9d96}
+.limpiar{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;color:var(--purp);cursor:pointer;padding:6px 4px;text-decoration:underline}
+.count{font-family:var(--mono);font-size:11px;color:var(--gris);margin-left:auto;white-space:nowrap}
+
+/* ---------- HILO ---------- */
+.hilo{border:1px solid var(--linea);background:var(--papel);margin-bottom:18px}
+.hilo-head{padding:16px 20px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;border-bottom:1px solid var(--linea)}
+.hilo-head .who{flex:1;min-width:220px}
+.hilo-head h3{font-size:19px;font-weight:700;line-height:1.2}
+.hilo-head .emp{font-size:13.5px;color:var(--gris);margin-top:3px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.b{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:2px;border:1px solid var(--linea);color:#55554f;white-space:nowrap}
+.b-cli{background:var(--purp);color:#fff;border-color:var(--purp)}
+.b-var{display:inline-flex;align-items:center;gap:5px}
+.b-var .fl{font-size:13px;line-height:1}
+.b-a{background:var(--lima);color:var(--navy);border-color:var(--lima)}
+.b-b,.b-c,.b-d{background:#eceae3}
+.b-conf-alta{border-color:var(--ok);color:var(--ok)}
+.b-conf-baja{border-color:var(--alerta);color:var(--alerta)}
+
+.turnos{padding:6px 20px 4px}
+.turno{padding:14px 0;border-bottom:1px dashed var(--linea)}
+.turno:last-child{border-bottom:0}
+.turno .meta{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);display:flex;gap:10px;align-items:center;margin-bottom:7px;flex-wrap:wrap}
+.turno .txt{white-space:pre-wrap;font-size:15px;line-height:1.6}
+.t-nosotros .txt{color:#5c5c56}
+.t-lead{background:#f0eee7;margin:0 -20px;padding:14px 20px;border-bottom:1px dashed var(--linea)}
+.t-lead .txt{color:var(--tinta);font-weight:500}
+.t-prop{background:linear-gradient(180deg,rgba(227,249,114,.28),rgba(227,249,114,.10));margin:0 -20px;padding:16px 20px;border-left:3px solid var(--purp)}
+.t-prop .txt{font-size:16.5px;line-height:1.62;color:var(--navy)}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.d-nos{background:#b8b6ae}.d-lead{background:var(--navy)}.d-prop{background:var(--purp)}
+
+.nada{padding:18px 20px;background:#f0eee7;font-size:14.5px;color:#55554f;border-left:3px solid var(--gris)}
+.nada strong{color:var(--tinta)}
+
+.detalle{border-top:1px solid var(--linea)}
+.detalle summary{padding:11px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.detalle summary::-webkit-details-marker{display:none}
+.detalle summary:hover{color:var(--purp)}
+.detalle summary:after{content:"+";font-size:15px}
+.detalle[open] summary:after{content:"–"}
+.dgrid{padding:4px 20px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px 26px}
+.dcell .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);margin-bottom:4px}
+.dcell .v{font-size:14px;line-height:1.5;color:#3d3d3a;white-space:pre-wrap}
+.dcell.wide{grid-column:1/-1}
+
+/* ---------- SUGERENCIAS ---------- */
+.sug{border:1px solid var(--linea);background:var(--papel);padding:22px;margin-bottom:14px;border-left:4px solid var(--purp)}
+.sug h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.sug p{margin:0 0 8px;font-size:15px;color:#4a4a46}
+.sug .quien{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--purp)}
+
+/* ---------- LEGACY ---------- */
+.legacy{background:var(--navy);color:#c9c7c0;padding:28px;border-left:4px solid var(--lima)}
+.legacy h3{color:var(--crema);font-size:20px;margin-bottom:10px}
+.legacy a{color:var(--lima)}
+.legacy ul{margin:12px 0 0;padding-left:18px}
+.legacy li{margin-bottom:6px;font-size:15px}
+
+footer{padding:40px 0 60px;font-size:13.5px;color:var(--gris)}
+.aviso{background:#fff6e8;border:1px solid #e8d5b0;padding:14px 18px;font-size:14px;color:#6b4f22;margin-top:18px}
+
+@media(max-width:760px){
+  .cambio{grid-template-columns:1fr}
+  .cambio .antes{border-right:0;border-bottom:1px solid var(--linea)}
+  .hero{padding:40px 0 34px}
+  section{padding:44px 0}
+  .count{width:100%;margin:6px 0 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+:focus-visible{outline:2px solid var(--purp-lt);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">{{EYEBROW}}</div>
+    <h1>Ahora se ve <em>qué le dijimos</em> antes de juzgar la respuesta.</h1>
+    <p class="sub">{{SUB}}</p>
+
+    <div class="controls">{{CONTROLES}}</div>
+  </div>
+</header>
+
+<section id="cambios">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">01</span><h2>Qué cambió desde tu feedback</h2></div>{{CAMBIOS}}</div>
+</section>
+
+<section id="legacy">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">02</span><h2>La versión anterior</h2></div>
+    <p class="lede">La revisión del 4 de agosto sigue publicada y sirve para comparar. Lo que no tenía es lo que hace útil a esta.</p>
+    {{ARCHIVO}}
+    <div class="legacy">
+      <h3>Revisión de cola v1 · 4 de agosto</h3>
+      <p><a href="./legacy/">Abrir la revisión del 4 de agosto</a></p>
+      <ul>
+        <li>18 hilos de dos clientes. Esta trae 48 de seis.</li>
+        <li>Sin nuestro mensaje anterior, que era el hueco que señalaste.</li>
+        <li>Sin el tag ni el grupo de la matriz, así que no se veía por qué esa respuesta y no otra.</li>
+        <li>Tres toques de follow-up en vez de cuatro.</li>
+        <li>Confianza alta en casi todo, lo que hacía que el dato no dijera nada.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="cola">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">03</span><h2>La cola</h2></div>
+    <p class="lede">48 hilos. Cada tarjeta se lee de arriba abajo como la conversación real: lo que enviamos, lo que contestó, y lo que MORENO propone. Los detalles técnicos están plegados.</p>
+  </div>
+  <div class="bar">
+    <div class="wrap">
+      <div id="filtros"></div>
+    </div>
+  </div>
+  <div class="wrap"><div id="lista"></div></div>
+</section>
+
+<section id="sugerencias">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">04</span><h2>Qué sugerimos ahora</h2></div>{{SUGERENCIAS}}</div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Barrido en modo prueba del 13 de agosto de 2026. Motor <span class="mono">sao v0.29.0</span>. Ningún mensaje se envió, ninguna etiqueta se aplicó y ningún CRM se modificó.</p>
+    <p>Contiene nombres de contactos y empresas reales. No compartir fuera del equipo.</p>
+  </div>
+</footer>
+
+<script id="datos" type="application/json">{{DATOS}}</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById('datos').textContent);
+  var lista = document.getElementById('lista');
+  var cajaF = document.getElementById('filtros');
+
+  var BANDERA = {es_es:'🇪🇸', es_mx:'🇲🇽', es_ar:'🇦🇷', en:'🇬🇧', pt_br:'🇧🇷'};
+  var IDIOMA  = {es_es:'España', es_mx:'México', es_ar:'Argentina', en:'Inglés', pt_br:'Brasil'};
+  var ESTADO  = {A:'Continuidad', B:'Cierre', C:'Fuera del árbol', D:'Dormido'};
+
+  function fConf(r){ return (r.conf||'').split(' ')[0]; }
+
+  var DIM = [
+    {id:'cli',  lab:'Cliente',   get:function(r){return r.cli;}},
+    {id:'g',    lab:'Estado',    get:function(r){return r.g;}, etiq:ESTADO},
+    {id:'mat',  lab:'Respuesta', get:function(r){return r.mat;}},
+    {id:'var',  lab:'Idioma',    get:function(r){return r.var;}, bandera:true},
+    {id:'conf', lab:'Confianza', get:fConf, etiq:{alta:'Alta',media:'Media',baja:'Baja',no:'No aplica'}}
+  ];
+
+  var sel = {}; DIM.forEach(function(d){ sel[d.id]=null; });
+  var texto = '';
+
+  function esc(x){ return String(x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function pasa(r, excepto){
+    for(var i=0;i<DIM.length;i++){
+      var d=DIM[i];
+      if(d.id===excepto) continue;
+      if(sel[d.id] && d.get(r)!==sel[d.id]) return false;
+    }
+    if(texto){
+      var blob=(r.lead+' '+r.emp+' '+r.msg+' '+r.lead_msg+' '+r.tag).toLowerCase();
+      if(blob.indexOf(texto)<0) return false;
+    }
+    return true;
+  }
+  function valores(d){
+    var v=[]; D.forEach(function(r){ var x=d.get(r); if(x && v.indexOf(x)<0) v.push(x); });
+    return v;
+  }
+  function hayFiltro(){ return !!texto || DIM.some(function(d){ return sel[d.id]; }); }
+
+  // --- fila de búsqueda, se construye una sola vez ---
+  var rowBuscar = document.createElement('div'); rowBuscar.className='frow';
+  var labB=document.createElement('span'); labB.className='flab'; labB.textContent='Buscar';
+  var inp=document.createElement('input');
+  inp.className='buscar'; inp.type='search';
+  inp.placeholder='Nombre, empresa, tag o texto del mensaje';
+  inp.setAttribute('aria-label','Buscar en los hilos');
+  inp.addEventListener('input', function(){ texto=this.value.trim().toLowerCase(); pintaChips(); pintaLista(); });
+  var btnLimpiar=document.createElement('button');
+  btnLimpiar.className='limpiar'; btnLimpiar.textContent='Quitar filtros';
+  btnLimpiar.addEventListener('click', function(){
+    DIM.forEach(function(d){ sel[d.id]=null; }); texto=''; inp.value='';
+    pintaChips(); pintaLista();
+  });
+  var cnt=document.createElement('span'); cnt.className='count';
+  rowBuscar.appendChild(labB); rowBuscar.appendChild(inp); rowBuscar.appendChild(btnLimpiar); rowBuscar.appendChild(cnt);
+
+  var cajaChips=document.createElement('div');
+  cajaF.appendChild(rowBuscar); cajaF.appendChild(cajaChips);
+
+  function pintaChips(){
+    btnLimpiar.style.display = hayFiltro() ? '' : 'none';
+    cajaChips.innerHTML='';
+    DIM.forEach(function(d){
+      var vals=valores(d);
+      if(vals.length<2) return;
+      var row=document.createElement('div'); row.className='frow';
+      var lab=document.createElement('span'); lab.className='flab'; lab.textContent=d.lab;
+      row.appendChild(lab);
+      vals.forEach(function(v){
+        var n = D.filter(function(r){ return d.get(r)===v && pasa(r, d.id); }).length;
+        var b=document.createElement('button');
+        b.className='chip';
+        b.setAttribute('aria-pressed', sel[d.id]===v ? 'true':'false');
+        if(n===0 && sel[d.id]!==v) b.disabled=true;
+        var txt = d.bandera ? (IDIOMA[v]||v) : ((d.etiq && d.etiq[v]) ? d.etiq[v] : v);
+        var html = (d.bandera && BANDERA[v]) ? '<span class="fl">'+BANDERA[v]+'</span>' : '';
+        html += '<span>'+esc(txt)+'</span><span class="c">'+n+'</span>';
+        b.innerHTML=html;
+        b.addEventListener('click', function(){
+          sel[d.id] = (sel[d.id]===v) ? null : v;
+          pintaChips(); pintaLista();
+        });
+        row.appendChild(b);
+      });
+      cajaChips.appendChild(row);
+    });
+  }
+
+  function cell(k,v,wide){
+    if(!v) return '';
+    return '<div class="dcell'+(wide?' wide':'')+'"><div class="k">'+esc(k)+'</div><div class="v">'+esc(v)+'</div></div>';
+  }
+
+  function tarjeta(r){
+    var c=fConf(r);
+    var confClase = c==='alta'?'b-conf-alta':(c==='baja'?'b-conf-baja':'');
+    var h='<article class="hilo">';
+    h+='<div class="hilo-head"><div class="who"><h3>'+esc(r.lead)+'</h3><div class="emp">'+esc(r.emp)+'</div></div>';
+    h+='<div class="badges">';
+    h+='<span class="b b-cli">'+esc(r.cli)+'</span>';
+    if(r.var) h+='<span class="b b-var"><span class="fl">'+(BANDERA[r.var]||'')+'</span>'+esc(IDIOMA[r.var]||r.var)+'</span>';
+    h+='<span class="b b-'+r.g.toLowerCase()+'">'+esc(ESTADO[r.g]||r.g)+'</span>';
+    if(r.mat) h+='<span class="b">'+esc(r.mat)+'</span>';
+    if(c) h+='<span class="b '+confClase+'">Confianza '+esc(c)+'</span>';
+    h+='</div></div>';
+
+    h+='<div class="turnos">';
+    if(r.nuestro) h+='<div class="turno t-nosotros"><div class="meta"><span class="dot d-nos"></span>Le enviamos'+(r.toque?' · toque '+esc(r.toque):'')+(r.fn?' · '+esc(r.fn):'')+'</div><div class="txt">'+esc(r.nuestro)+'</div></div>';
+    if(r.lead_msg) h+='<div class="turno t-lead"><div class="meta"><span class="dot d-lead"></span>Contestó'+(r.fl?' · '+esc(r.fl):'')+(r.dias?' · hace '+esc(r.dias)+' días':'')+'</div><div class="txt">'+esc(r.lead_msg)+'</div></div>';
+    if(r.msg) h+='<div class="turno t-prop"><div class="meta"><span class="dot d-prop"></span>MORENO propone'+(r.p0&&r.p1?' · peldaño '+esc(r.p0)+' a '+esc(r.p1):'')+'</div><div class="txt">'+esc(r.msg)+'</div></div>';
+    h+='</div>';
+    if(!r.msg) h+='<div class="nada"><strong>No se redacta.</strong> '+esc(r.gmot||r.salida)+'</div>';
+
+    var d='';
+    d+=cell('Tag propuesto', r.tag);
+    d+=cell('Tag que tenía', r.tag0);
+    d+=cell('Sender', r.sender);
+    d+=cell('Tipo de cierre', r.cierre);
+    d+=cell('Preguntas', r.preg);
+    d+=cell('Voz del sender', r.voz);
+    d+=cell('Investigación', r.inv, true);
+    d+=cell('Cadena de follow-up', r.fu, true);
+    d+=cell('Defecto del mensaje real', r.defecto, true);
+    d+=cell('Veredicto', r.ver, true);
+    d+=cell('Camino de salida', r.salida, true);
+    if(d) h+='<details class="detalle"><summary>Detalle</summary><div class="dgrid">'+d+'</div></details>';
+    return h+'</article>';
+  }
+
+  function pintaLista(){
+    var f = D.filter(function(r){ return pasa(r,null); });
+    lista.innerHTML = f.length ? f.map(tarjeta).join('')
+      : '<div class="nada">Ningún hilo cumple ese filtro. Prueba a quitar alguno.</div>';
+    cnt.textContent = (f.length===D.length) ? (D.length+' hilos') : (f.length+' de '+D.length+' hilos');
+  }
+
+  pintaChips(); pintaLista();
+})();
+</script>
+</body>
+</html>
