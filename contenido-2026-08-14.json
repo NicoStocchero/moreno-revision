@@ -1,0 +1,107 @@
+{
+  "sub": "66 hilos reales de 5 clientes, 11 respuestas redactadas. Primera pasada con email dentro del alcance: 29 de los 66 hilos son de Instantly. Cada uno con nuestro mensaje anterior delante. No se envió nada, no se etiquetó nada y no se tocó ningún CRM.",
+  "controles": [
+    {
+      "lab": "Control · cobertura de email",
+      "val": "29 hilos",
+      "note": "El canal llevaba tres barridos declarado y sin ejercitar. El 13 de agosto fueron 0 de 48. Aquí sale el fallo que solo tiene email."
+    },
+    {
+      "lab": "Control · ceguera",
+      "val": "0 fugas",
+      "note": "El corte lo hizo código sobre 613 hilos antes de repartir. La cola posterior fue a un fichero que no se abrió hasta el cierre."
+    },
+    {
+      "lab": "Confianza declarada",
+      "val": "0 alta · 11 media · 0 baja",
+      "note": "Ni un borrador llega a alta y los 11 van al circuito de aprobación. El 13 de agosto fueron 4 alta, 33 media y 9 baja."
+    },
+    {
+      "lab": "Molde",
+      "val": "0 de 11",
+      "note": "Ninguna combinación de apertura, longitud de primera frase, entrada del qué hacemos, cierre y número de frases se repite. El 13 de agosto fueron 2 de 33 y el 3 de agosto 22 de 45."
+    }
+  ],
+  "cambios": [
+    {
+      "titulo": "Se va directo a la reunión, también en More Info",
+      "estado": "Hecho",
+      "antes": "El More Info se contestaba entregando material y midiendo interés. La reunión llegaba dos o tres turnos después, si llegaba.",
+      "ahora": "En cuanto hay interés, el mensaje va a la reunión. En este barrido 8 de los 11 borradores la proponen, un 73%. El 13 de agosto fueron 11 de 33, un 33%.",
+      "cita": "\"Se va directo a la reunión. Decisión de Alejandro del 13 de agosto de 2026.\""
+    },
+    {
+      "titulo": "El cierre pasa a ser propuesta de reunión",
+      "estado": "Hecho",
+      "antes": "Los tags de conversación cerraban con una pregunta de intención: si le encajaba, si le interesaba, si lo veía.",
+      "ahora": "La matriz por etiqueta cierra proponiendo reunión. De los 11 borradores, 3 cierran con enlace de agenda, 5 con binaria de llamada o de fecha y 3 se quedan atrás a propósito: dos no tienen aún interés declarado y uno solo tenía que entregar lo que el lead pidió."
+    },
+    {
+      "titulo": "El tope sube de 45 a 90 palabras y admite dos párrafos",
+      "estado": "Hecho",
+      "antes": "45 palabras. Un mensaje de email tenía que elegir entre contestar lo que preguntaron y decir a qué nos dedicamos.",
+      "ahora": "90 palabras y ninguna frase de más de 25. Ningún borrador de este barrido se pasa: el más largo son 89 palabras y la media 56. Los cinco de email van de 51 a 89, los seis de LinkedIn de 38 a 71."
+    },
+    {
+      "titulo": "El qué hacemos se adapta mirando la web del lead",
+      "estado": "Hecho",
+      "antes": "La frase de a qué nos dedicamos salía igual de la ficha del cliente, sin mirar a quién le vende el prospecto.",
+      "ahora": "Se entra en la web de la empresa del lead antes de escribirla. En Serdel se ve el efecto: el mismo cliente describe lo que hace de tres formas distintas según si el prospecto abre tienda, oficina o local de fitness."
+    },
+    {
+      "titulo": "No se afirma lo que no se sabe del prospecto",
+      "estado": "Hecho",
+      "antes": "Sin señal pública se rellenaba el ángulo con el diferenciador de la ficha, así que el mensaje afirmaba cosas del prospecto que nadie había verificado.",
+      "ahora": "El bloque de investigación escribe <strong>sin senal publica</strong> y el mensaje no afirma lo que ese bloque no dio por verificado. Pasó en eEvidence: tres búsquedas, nada dentro de la ventana de 12 meses, y el borrador salió sin ángulo inventado."
+    },
+    {
+      "titulo": "Los enlaces van sin https://",
+      "estado": "Hecho",
+      "antes": "Los enlaces salían con protocolo, que en LinkedIn se come una línea del formato chat y en email dispara la vista previa.",
+      "ahora": "Se escriben en seco. Ningún borrador de este barrido lleva protocolo."
+    }
+  ],
+  "sugerencias": [
+    {
+      "titulo": "En email, el lead no es \"el que no es de nuestro dominio\"",
+      "quien": "Decisión técnica · Nico",
+      "texto": [
+        "Es el fallo grande de esta pasada y solo existe en email. La regla que decidía de quién era cada mensaje miraba el dominio del remitente. Funciona hasta que alguien de nuestro lado entra al hilo desde su buzón real: en Slovak Telekom, dos correos nuestros firmados por David González salieron de <strong>caseonit.com</strong>, y con el cliente en copia desde <strong>medux.com</strong>. Instantly marca los tres como entrantes.",
+        "Consecuencia: MORENO leyó nuestro propio seguimiento como si fuera la respuesta del lead, dejó <strong>nuestro último mensaje</strong> vacío, el toque en nulo y los días mal contados. Afecta a 101 mensajes de 4.400 repartidos en 69 hilos, un 2,3%. En LinkedIn no puede pasar: hay dos partes y cada mensaje viene marcado.",
+        "El arreglo no es una lista de dominios más larga, porque esos buzones no son dominios de envío. Instantly ya guarda quién es el lead del hilo: el lead es ese y nadie más. Este barrido se reextrajo con esa regla."
+      ]
+    },
+    {
+      "titulo": "Un hilo de email tiene más de dos partes y el motor asume dos",
+      "quien": "Decisión de producto · Alejandro y Nico",
+      "texto": [
+        "Aun con la autoría arreglada, aparecen terceros que no son el lead ni nosotros: el cliente en copia, un compañero al que le reenvían el hilo, un referido presentado dentro del propio correo. En estos 29 hilos salieron cuatro personas nombradas dentro del cuerpo sin ningún permiso para escribirles, y en Traditional Tours hay dos identidades nuestras en el mismo hilo, la cuenta de Isabel y la firma de David.",
+        "El árbol M1 a M4 y la matriz de tags están escritos para una conversación entre dos. Hace falta decidir qué hace MORENO cuando el que contesta no es a quien se escribió: si reasigna el hilo, si abre uno nuevo o si escala. Hoy lo resuelve cada barrido por su cuenta."
+      ]
+    },
+    {
+      "titulo": "Cuatro de los cinco clientes hacen email sin cuenta de envío registrada",
+      "quien": "Decisión operativa · Nico",
+      "texto": [
+        "Solo MedUX tiene filas de email en <strong>core.moreno_sending_accounts</strong>. Desorbitante, WeTalkee, Serdel y Offitravel operan campañas de Instantly sin ninguna, así que la firma, el mercado y la variante de voz se dedujeron del propio hilo en 27 de los 29 hilos de email.",
+        "No es cosmético: un buzón de Offitravel está operando desde <strong>thedato360.info</strong>, dominio de otro cliente, y en Serdel el mismo remitente aparece con <strong>serdeles.org</strong> y <strong>serdeles.com</strong>. Mientras la tabla esté vacía, la regla de \"la configuración se consulta, no se recuerda\" no se puede cumplir en email."
+      ]
+    },
+    {
+      "titulo": "Ningún borrador llega a confianza alta",
+      "quien": "Decisión de producto · Alejandro",
+      "texto": [
+        "11 de 11 salen en media y los 11 van al circuito de aprobación de Slack. Con aprobación manual activa en los cinco clientes eso hoy no cambia nada, pero es el número que decide si un cliente puede pasar a autónomo, y llevamos dos barridos sin que suba.",
+        "Las condiciones que fallan se repiten: rol declarado sin fuente pública, encaje adyacente y señal fuera de la ventana de 12 meses. Conviene mirar si el techo está bien puesto o si la escala está calibrada para que nunca se llegue arriba."
+      ]
+    },
+    {
+      "titulo": "El grupo D se come el bloque de email",
+      "quien": "Decisión operativa · Nico",
+      "texto": [
+        "De los 29 hilos de email, 11 son dormidos de más de 90 días y 15 son acuses, OOO o autorespuestas. Quedan 5 borradores. En LinkedIn el reparto es otro: 37 hilos y 6 borradores, pero con 0 dormidos porque el inbox se trabaja seguido.",
+        "El inbox de email no se está barriendo con la frecuencia que pide el canal. Hay una baja pedida por escrito hace 157 días sin traza de DND, y tres informes de spam de IONOS contra dominios de envío que entraron al barrido como si fueran respuestas de leads."
+      ]
+    }
+  ]
+}
