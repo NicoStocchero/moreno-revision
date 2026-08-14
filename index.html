@@ -59,7 +59,13 @@ section{padding:64px 0;border-bottom:1px solid var(--linea)}
 .quote{border-left:3px solid var(--purp-lt);padding-left:14px;font-size:14.5px;color:#3d3d3a;font-style:italic;margin:10px 0 0}
 
 /* ---------- FILTROS ---------- */
-.bar{position:sticky;top:0;z-index:30;background:var(--crema);border-bottom:1px solid var(--linea);padding:12px 0 10px;box-shadow:0 6px 18px -14px rgba(0,0,0,.35)}
+.bar{position:sticky;top:0;z-index:30;background:var(--crema);border-bottom:1px solid var(--linea);padding:9px 0 8px;box-shadow:0 6px 18px -14px rgba(0,0,0,.35)}
+.chips-caja{max-height:min(46vh,340px);overflow-y:auto;margin-top:8px;padding-top:8px;border-top:1px solid var(--linea)}
+.chips-caja[hidden]{display:none}
+.plegar{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--linea);color:var(--purp);cursor:pointer;padding:6px 10px;border-radius:2px;white-space:nowrap}
+.plegar[aria-expanded="true"]{background:var(--navy);color:var(--lima);border-color:var(--navy)}
+.plegar .n{opacity:.6}
+@media(max-width:640px){.flab{width:100%}.chips-caja{max-height:40vh}}
 .frow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
 .frow:last-child{margin-bottom:0}
 .flab{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);width:74px;flex:none}
@@ -191,7 +197,7 @@ footer{padding:40px 0 60px;font-size:13.5px;color:var(--gris)}
 <section id="cola">
   <div class="wrap">
     <div class="sec-head"><span class="n">03</span><h2>La cola</h2></div>
-    <p class="lede">48 hilos. Cada tarjeta se lee de arriba abajo como la conversación real: lo que enviamos, lo que contestó, y lo que MORENO propone. Los detalles técnicos están plegados.</p>
+    <p class="lede" id="lede-cola"><span id="n-hilos">Los</span> hilos. Cada tarjeta se lee de arriba abajo como la conversación real: lo que enviamos, lo que contestó, y lo que MORENO propone. Los detalles técnicos están plegados.</p>
   </div>
   <div class="bar">
     <div class="wrap">
@@ -224,6 +230,8 @@ footer{padding:40px 0 60px;font-size:13.5px;color:var(--gris)}
   var lista = document.getElementById('lista');
   var cajaF = document.getElementById('filtros');
 
+  var elN=document.getElementById('n-hilos');
+  if(elN) elN.textContent=D.length;
   var BANDERA = {es_es:'🇪🇸', es_mx:'🇲🇽', es_ar:'🇦🇷', en:'🇬🇧', pt_br:'🇧🇷'};
   var IDIOMA  = {es_es:'España', es_mx:'México', es_ar:'Argentina', en:'Inglés', pt_br:'Brasil'};
   var ESTADO  = {A:'Continuidad', B:'Cierre', C:'Fuera del árbol', D:'Dormido'};
@@ -276,13 +284,31 @@ footer{padding:40px 0 60px;font-size:13.5px;color:var(--gris)}
     pintaChips(); pintaLista();
   });
   var cnt=document.createElement('span'); cnt.className='count';
-  rowBuscar.appendChild(labB); rowBuscar.appendChild(inp); rowBuscar.appendChild(btnLimpiar); rowBuscar.appendChild(cnt);
+  var btnPlegar=document.createElement('button');
+  btnPlegar.className='plegar'; btnPlegar.type='button';
+  btnPlegar.setAttribute('aria-expanded','false');
+  btnPlegar.setAttribute('aria-controls','chips-caja');
+  rowBuscar.appendChild(labB); rowBuscar.appendChild(inp);
+  rowBuscar.appendChild(btnPlegar); rowBuscar.appendChild(btnLimpiar); rowBuscar.appendChild(cnt);
 
   var cajaChips=document.createElement('div');
+  cajaChips.className='chips-caja'; cajaChips.id='chips-caja'; cajaChips.hidden=true;
   cajaF.appendChild(rowBuscar); cajaF.appendChild(cajaChips);
+
+  function nActivos(){ return DIM.filter(function(d){ return sel[d.id]; }).length; }
+  function pintaPlegar(){
+    var ab=!cajaChips.hidden, n=nActivos();
+    btnPlegar.setAttribute('aria-expanded', ab?'true':'false');
+    btnPlegar.innerHTML = (ab?'Ocultar filtros':'Filtros') + (n?' <span class="n">'+n+'</span>':'');
+  }
+  btnPlegar.addEventListener('click', function(){
+    cajaChips.hidden=!cajaChips.hidden; pintaPlegar();
+  });
+  pintaPlegar();
 
   function pintaChips(){
     btnLimpiar.style.display = hayFiltro() ? '' : 'none';
+    pintaPlegar();
     cajaChips.innerHTML='';
     DIM.forEach(function(d){
       var vals=valores(d);
