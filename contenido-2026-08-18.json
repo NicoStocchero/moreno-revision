@@ -1,0 +1,127 @@
+{
+ "sub": "15 hilos de tres clientes: 12 de la muestra de alcance (5 de Serdel, 4 de Offitravel, 3 de WeTalkee) y 3 de control de comparativa añadidos porque el pool de WeTalkee no traía ni un lead con proveedor. 10 borradores redactados, 3 hilos de email dentro. No se envió nada, no se etiquetó nada, no se escribió en Supabase y no se tocó el CRM.",
+ "controles": [
+  {
+   "lab": "Ceguera · fugas",
+   "val": "0 fugas",
+   "note": "El corte lo hizo código: cada hilo termina en el último mensaje del lead y lo posterior fue a un fichero sellado en base64. El fichero conserva atime igual a mtime de creación, o sea que nadie lo abrió hasta la fase 5."
+  },
+  {
+   "lab": "Confianza declarada",
+   "val": "2 alta · 13 media · 0 baja",
+   "note": "Ninguna baja y ningún borrador llega a alta: las dos altas son cierres evidentes. El techo lo pone la falta de señal pública fechada dentro de doce meses, no la redacción. El 14 de agosto fueron 0 alta, 11 media y 0 baja."
+  },
+  {
+   "lab": "Molde",
+   "val": "2 de 10",
+   "note": "S1, O1 y C1 abrían con la misma forma, acuse corto más vocativo. Se reescribieron O1 y C1. Bajo el hash de la frase literal ninguno habría colisionado: los tres literales eran distintos. El 14 de agosto fueron 0 de 11."
+  },
+  {
+   "lab": "Derivación correcta en Serdel",
+   "val": "4 de 4 · 1 con derivación explícita",
+   "note": "Los cuatro borradores de Serdel cumplen las dos prohibiciones: ninguno empuja reunión y ninguno da cifra, ni suelo, ni horquilla, ni un 'depende'. Solo S4 deriva de forma explícita a Álvaro García Segura, porque en los otros tres no se dispara el gatillo de modo.md y porque en LinkedIn el sender ya es Álvaro."
+  }
+ ],
+ "cambios": [
+  {
+   "titulo": "El precio de Serdel deja de existir en outbound",
+   "estado": "Hecho",
+   "antes": "Se daba el suelo de 9.000 euros para oficinas y los tickets por tipología estaban disponibles para el motor.",
+   "ahora": "Ninguna cifra, en ninguna forma. En los cuatro borradores de Serdel de esta pasada no aparece un número de precio, ni una horquilla, ni un 'desde'. Los tickets figuran en la ficha como cifras prohibidas en outbound.",
+   "cita": "\"En Serdel no se da precio\""
+  },
+  {
+   "titulo": "La comparativa de WeTalkee, acotada a copy de apertura",
+   "estado": "Hecho",
+   "antes": "El diferenciador estaba vivo en tres ficheros y se usaba también contra el proveedor del lead. Los mensajes reales lo demuestran: el toque del 15 de julio a René Montaño abre con 'muchos grupos que ya tienen un asistente acaban pagando cuota fija la usen o no' y el del 27 de julio a José Manuel García pregunta si su software deja escapar llamadas en las horas fuertes.",
+   "ahora": "En cuanto el lead declara que ya tiene una IA, el diferenciador no se usa: tag Has Provider, se dice qué hacemos y se deriva a Olivier. De los 3 borradores de control, 0 comparan. De los 3 mensajes reales que se enviaron en esos mismos hilos, 2 comparan.",
+   "cita": "\"Diferenciador (solo para abrir, nunca contra el proveedor del lead)\""
+  },
+  {
+   "titulo": "Offitravel ya no ofrece la llamada para tapar un hueco de ficha",
+   "estado": "Hecho",
+   "antes": "activos.md dejaba ofrecer la llamada propia cuando faltaba un dato, y modo.md lo derogaba sin que el texto lo dijera.",
+   "ahora": "Ante un hueco de ficha se deriva a Álvaro Pujales. El único borrador de Offitravel que llega a esa situación, O4, cierra derivando y sin proponer ninguna llamada."
+  },
+  {
+   "titulo": "Fecha de corte: MORENO solo actúa sobre hilos posteriores al 18 de agosto",
+   "estado": "Hecho, y hay que revisarlo",
+   "antes": "Sin corte, un barrido podía escribir a un hilo de 2022 que llevaba tres años parado.",
+   "ahora": "moreno_activo_desde está en 2026-08-18 00:00 UTC en los cinco clientes. El efecto medido aquí es fuerte: de los 15 hilos de esta pasada solo 1 es posterior al corte. El freno hace lo que promete y a la vez deja fuera respuestas de ayer de campañas vivas."
+  },
+  {
+   "titulo": "Estado archivada para lo que el backfill dejó abierto",
+   "estado": "Hecho",
+   "antes": "El backfill marcó como abiertos hilos que no lo eran, así que la cola de cualquier barrido salía inflada.",
+   "ahora": "137 hilos en estado archivada, comprobado hoy en core.moreno_thread_state sobre un total de 544. La consulta de alcance de esta revisión ya trabaja sobre el pool limpio."
+  },
+  {
+   "titulo": "Cruce con el CRM: no se persigue a quien ya agendó",
+   "estado": "Hecho",
+   "antes": "El follow-up perseguía por fecha de vencimiento sin mirar si el contacto ya tenía cita.",
+   "ahora": "93 citas cargadas desde GoHighLevel en core.moreno_meetings, de las que 80 están en confirmed o showed y frenan la cola. Una cita cancelada o un no-show sí se persigue."
+  },
+  {
+   "titulo": "MedUX escala por correo a David, Jaime y Dayany",
+   "estado": "Hecho, fuera del alcance de esta pasada",
+   "antes": "El escalado de MedUX dependía de a quién le tocara mirar el hilo.",
+   "ahora": "Todo lead se escala por correo a los tres, con copia al equipo. Esta revisión no tocó MedUX: solo se comprobó que su gate de alta sale con puede_operar en true y cero bloqueantes."
+  },
+  {
+   "titulo": "El apertura_hash hashea la forma, no la frase literal",
+   "estado": "Hecho, y es el cambio que más se ha notado aquí",
+   "antes": "El hash miraba las palabras. Tres aperturas distintas con la misma estructura pasaban limpias.",
+   "ahora": "Mira la forma. En esta pasada 'Entendido, Daniel.', 'Entendido, Gloria, gracias por el aviso.' y 'Entendido, René.' colisionan, en tres clientes distintos, y dos se reescribieron. Con el hash anterior habrían salido las tres."
+  }
+ ],
+ "sugerencias": [
+  {
+   "titulo": "La fecha de corte, tal como está, deja el barrido en cero",
+   "quien": "Decisión de negocio · Nico",
+   "texto": [
+    "<strong>moreno_activo_desde</strong> está en 2026-08-18 00:00 UTC en los cinco clientes, y de los 15 hilos de esta pasada solo uno es posterior: S1, Daniel Tobar-Richter de UNOde50, de las 10:25 de hoy. Los otros catorce quedan fuera, incluidas dos respuestas de ayer de campañas vivas de Offitravel y las tres de WeTalkee del 17 de agosto por la tarde.",
+    "A la vez <strong>ventana_dias</strong> está en 1 para Serdel, Offitravel y MedUX, o sea que el barrido manda leer desde ayer. Los dos frenos dicen cosas distintas sobre los mismos hilos y el motor no declara cuál gana. Hay que decidir dos cosas: si el corte se compara contra el inicio del día o contra el instante, y qué se hace con los hilos vivos anteriores al corte, porque hoy no se contestan nunca y el barrido va a parecer vacío."
+   ]
+  },
+  {
+   "titulo": "El anti molde arranca sin memoria: core.moreno_events está vacía",
+   "quien": "Decisión técnica · Nico",
+   "texto": [
+    "La tabla tiene <strong>0 filas y 0 hashes de apertura</strong>. El modo ensayo declara que el control anti molde compara contra los hashes reales de los últimos treinta días, y hoy no hay ninguno: el control solo puede funcionar dentro del lote.",
+    "No invalida esta pasada, porque las tres colisiones que se han encontrado son intra lote. Sí significa que la cifra de molde de este informe no está comparada contra histórico, y que un molde que se repita entre barridos no se va a detectar hasta que la tabla tenga un mes de vida. O se hace backfill de los eventos, o se asume que el control arranca en cero el primer día real y se dice."
+   ]
+  },
+  {
+   "titulo": "En LinkedIn el handoff de Serdel no tiene mecanismo",
+   "quien": "Decisión de criterio · Nico con Álvaro García Segura",
+   "texto": [
+    "modo.md define el handoff como presentar a Álvaro y ponerlo en copia. En el canal de email funciona. En LinkedIn el sender <strong>es</strong> Álvaro (cuenta 214686) y el canal no tiene CC, así que aplicar la regla literal haría que Álvaro se presentara a sí mismo.",
+    "Salió en S4, que es justo el hilo donde el lead pide la propuesta: Jose Luis Díaz Mariscal, director general de Juguettos, da su correo y espera algo. Aquí se resolvió dejando la derivación en interna y limitando el saliente al cambio de canal, sin CTA. Es defendible, pero no está escrito en ningún sitio, así que el siguiente barrido puede resolverlo distinto. Y se junta con un segundo hueco: la ficha no tiene ningún activo que mandar, el dossier está derogado hasta tener URL."
+   ]
+  },
+  {
+   "titulo": "La casilla 4 de WeTalkee contradice a activos.md",
+   "quien": "Decisión de criterio · Nico con Carlos",
+   "texto": [
+    "objetivo.md, casilla 4, dice que cuando el lead ya tiene una IA hay que preguntar por el modelo de cobro y buscar la grieta. activos.md, con fecha del 18 de agosto, dice que en cuanto declara que tiene una IA no se argumenta, se dice qué hacemos y se deriva a Olivier.",
+    "Los dos textos están vivos en la misma ficha y mandan cosas distintas sobre el mismo lead. Aquí ganó activos.md, que es el cambio nuevo, y por eso los tres controles salen limpios. Pero el mensaje real que se envió a René Montaño el 15 de julio siguió la casilla 4 al pie de la letra, y ese es exactamente el mensaje que compara. Mientras la casilla 4 siga escrita así, la comparativa tiene por dónde volver."
+   ]
+  },
+  {
+   "titulo": "Las cuentas de envío de Offitravel no cuadran, y son tres dominios",
+   "quien": "Decisión técnica · Nico",
+   "texto": [
+    "Supabase declara <strong>isabel.rodriguez@offitravelteam.es</strong> y <strong>david.garcia@offitravelgroup.es</strong>. En los hilos reales de esta pasada aparecen <strong>isabel.rodriguez@offitravelteam.com</strong> y <strong>isabel@offitravelteam.info</strong>. Tres dominios para el mismo cliente y dos alias para la misma persona.",
+    "En Serdel pasa lo mismo en pequeño: la configuración dice c.ramos@theserdel.es y el hilo de Kabilio salió de carlosramos@serdeles.com. datos.md prohíbe deducir un identificador, así que se reporta y no se corrige, pero con la variable de firma resolviéndose contra la fila equivocada un hilo puede acabar firmado por otra persona. Y un Do Not Contact aplicado sobre la cuenta declarada no cubriría la que de verdad escribió al lead."
+   ]
+  },
+  {
+   "titulo": "Diez de diez borradores abren con vocativo",
+   "quien": "Decisión técnica · Nico",
+   "texto": [
+    "El hash por forma ha hecho su trabajo con el acuse corto, pero hay un molde que no ve: los diez borradores llevan el nombre del lead dentro de la primera frase. Cambia la posición y cambia lo que va alrededor, y aun así es la misma huella repetida diez veces en tres clientes.",
+    "En esta pasada se rompió a mano en uno solo, C1, que abre sin vocativo. Merece la pena meter la presencia y la posición del vocativo dentro de lo que hashea apertura_hash, porque es de las pocas señales que un lector humano reconoce sin proponérselo."
+   ]
+  }
+ ]
+}
